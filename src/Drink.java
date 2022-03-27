@@ -1,4 +1,4 @@
-public class Drink extends MenuItem{
+public class Drink extends MenuItem implements MultiSize {
 
     private Size drinkSize;
 

@@ -1,4 +1,4 @@
-public class Fries extends FoodItem {
+public class Fries extends FoodItem implements MultiSize{
     
     private Size size;
 
