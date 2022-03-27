@@ -72,8 +72,8 @@ public abstract class MenuItem {
 
     @Override
     public String toString() {
-        return String.format("ID: %d.\nDescription: %s \nContains %d calories at the price of $%5.2f.", 
-        this.getID(), this.getDescription(), this.getCalories(), this.getPrice());
+        return String.format("%s | Contains %d calories.", 
+        this.getDescription(), this.getCalories());
     }
 
 }

@@ -24,8 +24,8 @@ public class Drink extends MenuItem{
 
     @Override
     public String toString() {
-        return String.format("ID: %d.\nDescription: %s \nContains %d calories in the %s size at the price of $%5.2f.", 
-        this.getID(), this.getDescription(), this.getCalories(), this.getSize(), this.getPrice());
+        return String.format("%s | Contains %d calories in the %s size.", 
+        this.getDescription(), this.getCalories(), this.getSize());
     }
 
 }
