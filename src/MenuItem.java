@@ -4,7 +4,7 @@ public abstract class MenuItem {
     private String description;
     private double price;
     private double maxDiscount;
-    protected boolean isInStock;
+    public boolean isInStock;
     private int calories;
 
     /**
@@ -68,6 +68,12 @@ public abstract class MenuItem {
     }
     public int getCalories() {
         return this.calories;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d.\nDescription: %s \nContains %d calories at the price of $%5.2f.", 
+        this.getID(), this.getDescription(), this.getCalories(), this.getPrice());
     }
 
 }
