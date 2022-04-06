@@ -1,3 +1,5 @@
+package items;
+
 public class Drink extends MenuItem implements MultiSize {
 
     private Size drinkSize;

@@ -1,4 +1,10 @@
-public class Tester {
+import invoice.Order;
+import items.Drink;
+import items.Size;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class POS extends Application {
 
     public static void main(String[] args) {
 
@@ -15,6 +21,14 @@ public class Tester {
         System.out.println(order);
         System.out.println(order.getTotalPrice());
 
+        //Application launching
+        launch();
+
     }
-    
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+        MainView view =new MainView();
+    }
 }

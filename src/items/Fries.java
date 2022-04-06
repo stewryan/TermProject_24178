@@ -1,9 +1,11 @@
+package items;
+
 public class Fries extends FoodItem implements MultiSize{
     
     private Size size;
 
     public Fries() {
-        super(9, "French Fries", 2.99, 0.02, new String[]{"Potato", "Salt"}, 0);
+        super(9, "French items.Fries", 2.99, 0.02, new String[]{"Potato", "Salt"}, 0);
         this.setSize(Size.SMALL);
     }
 
