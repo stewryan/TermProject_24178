@@ -2,10 +2,18 @@ import java.util.ArrayList;
 
 public class Order {
 
-    public ArrayList<MenuItem> items = new ArrayList<>();
-
+    private ArrayList<MenuItem> items = new ArrayList<>();
+    
     public void add(MenuItem item) {
         items.add(item);
+    }
+
+    public double getTotalPrice() {
+        double total = 0;
+        for (int i = 0; i < items.size(); i++) {
+            total += items.get(i).getPrice();
+        }
+        return total;
     }
 
     @Override
@@ -19,12 +27,10 @@ public class Order {
         return menu;
     }
 
-    public double getTotalPrice() {
-        double total = 0;
-        for (int i = 0; i < items.size(); i++) {
-            total += items.get(i).getPrice();
-        }
-        return total;
+    public Receipt completeOrder() {
+        Receipt newReceipt = new Receipt(items, getTotalPrice());
+
+        return newReceipt;
     }
     
 }

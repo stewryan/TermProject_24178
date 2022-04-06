@@ -12,8 +12,9 @@ public class Tester {
         order.add(mediumPepsi);
         order.add(largePepsi);
 
-        System.out.println(order);
-        System.out.println(order.getTotalPrice());
+        System.out.println(order.completeOrder());
+
+        
 
     }
     
