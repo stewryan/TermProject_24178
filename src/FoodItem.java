@@ -4,8 +4,8 @@ public abstract class FoodItem extends MenuItem {
 
     protected ArrayList<String> ingredients = new ArrayList<>(); // stores all the ingredients, all in lower case
 
-    public FoodItem(int id, String desc, double price, double discount, String[] ingredients, int calories) {
-        super(id, desc, price, discount, calories);
+    public FoodItem(int id, String desc, double discount, String[] ingredients) {
+        super(id, desc, discount);
         this.addIngredients(ingredients);
     }
 

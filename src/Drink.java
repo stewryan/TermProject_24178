@@ -6,12 +6,11 @@ public class Drink extends MenuItem implements MultiSize {
      * 
      * @param id
      * @param desc
-     * @param price
      * @param discount
      * @param size
      */
-    public Drink(int id, String desc, double price, double discount, Size size, int calories) {
-        super(id, desc, price, discount, calories);
+    public Drink(int id, String desc, double discount, Size size) {
+        super(id, desc, discount);
         this.drinkSize = size;
     }
 
@@ -20,6 +19,18 @@ public class Drink extends MenuItem implements MultiSize {
     }
     public Size getSize() {
         return this.drinkSize;
+    }
+
+    public int getCalories() {
+        return this.calories;
+    }
+    // generate the amount of calories for a drink
+    public void setCalories() {
+        switch(this.getSize()) {
+            case SMALL:
+                
+            break;
+        }
     }
 
     @Override
