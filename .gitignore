@@ -399,3 +399,7 @@ FodyWeavers.xsd
 TermProject_24178.iml
 TermProject_24178.iml
 .idea/workspace.xml
+
+# Default ignored files
+/shelf/
+/workspace.xml
