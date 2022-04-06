@@ -1,7 +1,11 @@
+package invoice;
+
+import items.MenuItem;
+
 import java.util.ArrayList;
 
 /**
- * Receipt is created when an Order.java has finished? Just ideas right now
+ * invoice.Receipt is created when an invoice.Order.java has finished? Just ideas right now
  */
 public class Receipt {
     
@@ -24,7 +28,7 @@ public class Receipt {
     public String toString() {
         String menu = "";
 
-        menu += "Receipt for Order Number " + orderNumber + "\n";
+        menu += "invoice.Receipt for invoice.Order Number " + orderNumber + "\n";
         menu += "----------------------------------------\n";
 
         for (int i = 0; i < items.size(); i++) {
