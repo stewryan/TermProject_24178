@@ -1,3 +1,7 @@
+package invoice;
+
+import items.MenuItem;
+
 import java.util.ArrayList;
 
 public class Order {

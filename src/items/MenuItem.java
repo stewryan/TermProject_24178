@@ -1,3 +1,5 @@
+package items;
+
 public abstract class MenuItem {
     
     private int id;
@@ -9,7 +11,7 @@ public abstract class MenuItem {
 
     /**
      * 
-     * No-arg constructor for MenuItem. Calls the multiple arg constructor with placeholder values.
+     * No-arg constructor for items.MenuItem. Calls the multiple arg constructor with placeholder values.
      */
     public MenuItem() {
         this(1, "Unnamed Menu Item", 0.0);
