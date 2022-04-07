@@ -19,7 +19,7 @@ public class MainView {
      */
     //Type Item and respective Drop down list
     private Label lblItemType = new Label("Item Type");
-    private String[] item_type = {"Food", "Drink"};
+    private String[] item_type = {"Drink", "Food"};
     private ComboBox cmbItemType = new ComboBox<>(FXCollections.observableArrayList(item_type));
 
     //Item name with it's text field
@@ -141,10 +141,21 @@ public class MainView {
 
         //Left side Content
         HBox rowItemType = new HBox(lblItemType, cmbItemType);
+        rowItemType.setSpacing(10);
+
         HBox rowItemName = new HBox(lblItemName, fldItemName);
+        rowItemName.setSpacing(2);
+
         HBox rowIngredients = new HBox(lblIngredients, fldIngredients);
+        rowIngredients.setSpacing(2);
+
         HBox rowSize = new HBox(lblSize, cmbSize);
+        cmbSize.getSelectionModel().selectFirst();
+        rowSize.setSpacing(40);
+
         HBox rowAddButton = new HBox(btnAdd);
+
+
 
         //Right side content
         HBox rowItemDisplay = new HBox(orderItemsDisplay);
