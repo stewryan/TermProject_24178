@@ -10,6 +10,7 @@ public class POS extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         MainView view = new MainView();
+        MainViewController controller = new MainViewController(view);
         //Insert Controller here
         Scene scene = new Scene(view.getView());
         primaryStage.setTitle("POS MAIN MENU");
