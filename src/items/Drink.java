@@ -28,11 +28,7 @@ public class Drink extends MenuItem implements MultiSize {
     }
     // generate the amount of calories for a drink
     public void setCalories() {
-        switch(this.getSize()) {
-            case SMALL:
-                
-            break;
-        }
+        
     }
 
     @Override
