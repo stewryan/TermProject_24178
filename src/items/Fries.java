@@ -4,7 +4,7 @@ public class Fries extends FoodItem implements MultiSize{
     
     private Size size;
 
-    public Fries() {
+    public Fries(int id, String desc, double discount) {
         super(9, "French items.Fries", 0.02, new String[]{"Potato", "Salt"});
         this.setSize(Size.SMALL);
     }
