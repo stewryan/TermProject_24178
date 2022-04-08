@@ -2,6 +2,11 @@ package items;
 
 import java.util.ArrayList;
 
+/**
+ * A class that reprents a general food item on the menu, can be nearly anything (e.g. sandwich, burger, salad, pizza)
+ * 
+ * @author Ryan Stewart Apr 2022
+ */
 public class FoodItem extends MenuItem {
 
     protected ArrayList<String> ingredients = new ArrayList<>(); // stores all the ingredients, all in lower case
@@ -31,6 +36,13 @@ public class FoodItem extends MenuItem {
             output += item + " ";
         }
         return output;
+    }
+
+    @Override
+    public String toString() {
+
+        return "(" + this.getPrice() + ") Item [" + this.getID() + "]: " + this.getDescription() + "\n\t Ingredients: " + this.getIngredients();
+
     }
 
 }
