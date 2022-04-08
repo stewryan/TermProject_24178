@@ -3,10 +3,14 @@ import items.Drink;
 import items.FoodItem;
 // import items.Fries;
 import items.Size;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class MainViewController {
 
     Order order;
+
+    EditView editView = new EditView();
 
     public MainViewController(MainView view){
         setView(view);
@@ -16,10 +20,21 @@ public class MainViewController {
 
         order = new Order();
 
+        view.getCmbItemType().setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 0){
+                    view.getFldIngredients().setDisable(true);
+                    view.getFldIngredients().setPromptText("No ingredients available");
 
+                } else {
+                    view.getFldIngredients().setDisable(false);
+                    view.getFldIngredients().setPromptText("");
+                }
+            }
+        });
 
-
-        view.btnAdd.setOnAction(e->{
+        view.getBtnAdd().setOnAction(e->{
             if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 0){
 
                 //Grabbing variables from mainView
@@ -42,10 +57,15 @@ public class MainViewController {
                         break;
                 }
 
+                //If no description is entered alert info triggered, and nothing is added
+                if (desc.trim() == "" || desc == null){
+                    view.getAlertInfo().showAndWait();
+                } else { //If it's not the case it's added
+                    Drink drink = new Drink(id, desc, discount, size);
+                    order.add(drink);
+                    view.getOrderItemsDisplay().setText(order.completeOrder().toString());
+                }
 
-                Drink drink = new Drink(id, desc, discount, size);
-                order.add(drink);
-                view.getOrderItemsDisplay().setText(order.completeOrder().toString());
             } else if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 1){
 
                 //Grabbing variables from mainView
@@ -70,14 +90,31 @@ public class MainViewController {
 
                 // FoodItem food = new Fries(id, desc, discount);
                 // order.add(food);
+                //Get ingredients split the hole string by comas and store them
                 String ingredients = view.getFldIngredients().getText();
                 String[] ingredientsArray = ingredients.split(",");
+
+                // Create Food Item
                 FoodItem food = new FoodItem(id, desc, discount, new String[]{""});
                 food.addIngredients(ingredientsArray);
                 order.add(food);
                 view.getOrderItemsDisplay().setText(order.completeOrder().toString());
+
+                //Reseting all variables to nothing for next add
+                view.getCmbItemType().getSelectionModel().select(-1);
+                view.getFldItemName().setText("");
+                view.getFldIngredients().setText("");
+                view.getCmbSize().getSelectionModel().selectFirst();
+
+
             }
         });
+
+        view.getBtnEdit().setOnAction(e->{
+            editView.show();
+
+        });
+
 
 
 

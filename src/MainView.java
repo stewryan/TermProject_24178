@@ -1,5 +1,7 @@
 
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
@@ -36,7 +38,7 @@ public class MainView {
     private ComboBox cmbSize = new ComboBox<>(FXCollections.observableArrayList(size));
 
     //Add Button
-    Button btnAdd = new Button("ADD");
+    private Button btnAdd = new Button("ADD");
 
     /***
      * Left side ends
@@ -47,18 +49,20 @@ public class MainView {
     private TextArea orderItemsDisplay = new TextArea();
 
     private Button btnDelete = new Button("DELETE");
-    private Button btnFirst = new Button("FIRST");
-    private Button btnPrev = new Button("PREV");
-    private Button btnNext = new Button("NEXT");
-    private Button btnLast = new Button("LAST");
+    private Button btnEdit = new Button("EDIT");
 
     /***
      * RIght side ends
+     *
+     * Alerts Start
      */
 
+    private Alert alertInfo = new Alert(Alert.AlertType.ERROR);
 
     /**
-     * getters and setters
+     * Alerts end
+     *
+     * getters
      * @return
      */
     public Label getLblTitle() {
@@ -103,17 +107,11 @@ public class MainView {
     public Button getBtnDelete() {
         return btnDelete;
     }
-    public Button getBtnFirst() {
-        return btnFirst;
+    public Button getBtnEdit() {
+        return btnEdit;
     }
-    public Button getBtnPrev() {
-        return btnPrev;
-    }
-    public Button getBtnNext() {
-        return btnNext;
-    }
-    public Button getBtnLast() {
-        return btnLast;
+    public Alert getAlertInfo() {
+        return alertInfo;
     }
 
 
@@ -126,6 +124,7 @@ public class MainView {
         return this.view;
     }
 
+    //HBOXES AND VBOXES CREATED HERE
     private VBox createView() {
 
         //The "Everything" container
@@ -142,12 +141,21 @@ public class MainView {
         //Left side Content
         HBox rowItemType = new HBox(lblItemType, cmbItemType);
         rowItemType.setSpacing(10);
+        cmbItemType.getSelectionModel().selectFirst();
 
         HBox rowItemName = new HBox(lblItemName, fldItemName);
         rowItemName.setSpacing(2);
 
+
+        //Ingredients row show if it's food not drink
         HBox rowIngredients = new HBox(lblIngredients, fldIngredients);
         rowIngredients.setSpacing(2);
+
+
+
+
+
+
 
         HBox rowSize = new HBox(lblSize, cmbSize);
         cmbSize.getSelectionModel().selectFirst();
@@ -157,18 +165,22 @@ public class MainView {
 
 
 
+
         //Right side content
         HBox rowItemDisplay = new HBox(orderItemsDisplay);
         //order items Placeholder
         orderItemsDisplay.setPromptText("ORDER ITEMS HERE");
 
-        HBox rowItemsDisplayOptions = new HBox(btnDelete, btnFirst, btnPrev, btnNext, btnLast);
+        HBox rowItemsDisplayOptions = new HBox(btnDelete, btnEdit);
         rowItemsDisplayOptions.setAlignment(Pos.CENTER);
         rowItemsDisplayOptions.setSpacing(20);
+
 
         //Setting all the nodes fully
         leftSide.getChildren().addAll(rowItemType, rowItemName, rowIngredients, rowSize, rowAddButton);
         rightSide.getChildren().addAll(rowItemDisplay, rowItemsDisplayOptions);
+
+
 
         //Setting Bottom pane and Top Pane
         bottomPane.getChildren().addAll(leftSide, rightSide);
@@ -177,6 +189,9 @@ public class MainView {
 
         //Set the "everything"
         paneFull.getChildren().addAll(topPane, bottomPane);
+
+        //Alert box for empty fields
+        alertInfo.setContentText("None of the fields can be empty");
 
         return paneFull;
 
