@@ -2,7 +2,12 @@ package items;
 
 import java.util.ArrayList;
 
-public abstract class FoodItem extends MenuItem {
+/**
+ * A class that reprents a general food item on the menu, can be nearly anything (e.g. sandwich, burger, salad, pizza)
+ * 
+ * @author Ryan Stewart Apr 2022
+ */
+public class FoodItem extends MenuItem {
 
     protected ArrayList<String> ingredients = new ArrayList<>(); // stores all the ingredients, all in lower case
 
@@ -17,19 +22,27 @@ public abstract class FoodItem extends MenuItem {
         }
     }
 
-    // Overloaded methods, can use either string or index of the ingredient
-    public void removeIngredient(String itemName) {
-        ingredients.remove(itemName.toLowerCase());
-    }
-    public void removeIngredient(int index) {
-        ingredients.remove(index);
-    }
+    // // Overloaded methods, can use either string or index of the ingredient
+    // public void removeIngredient(String itemName) {
+    //     ingredients.remove(itemName.toLowerCase());
+    // }
+    // public void removeIngredient(int index) {
+    //     ingredients.remove(index);
+    // }
+
     public String getIngredients() {
         String output = "";
         for (String item: this.ingredients) {
             output += item + " ";
         }
         return output;
+    }
+
+    @Override
+    public String toString() {
+
+        return "(" + this.getPrice() + ") Item [" + this.getID() + "]: " + this.getDescription() + "\n\t Ingredients: " + this.getIngredients();
+
     }
 
 }

@@ -1,5 +1,10 @@
 package items;
 
+/**
+ * A class that represents a generic menu item. (Not specifically food)
+ * 
+ * @author Ryan Stewart Apr 2022
+ */
 public abstract class MenuItem {
     
     private int id;

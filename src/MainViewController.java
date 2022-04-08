@@ -1,7 +1,7 @@
 import invoice.Order;
 import items.Drink;
 import items.FoodItem;
-import items.Fries;
+// import items.Fries;
 import items.Size;
 
 public class MainViewController {
@@ -68,7 +68,12 @@ public class MainViewController {
                         break;
                 }
 
-                FoodItem food = new Fries(id, desc, discount);
+                // FoodItem food = new Fries(id, desc, discount);
+                // order.add(food);
+                String ingredients = view.getFldIngredients().getText();
+                String[] ingredientsArray = ingredients.split(",");
+                FoodItem food = new FoodItem(id, desc, discount, new String[]{""});
+                food.addIngredients(ingredientsArray);
                 order.add(food);
                 view.getOrderItemsDisplay().setText(order.completeOrder().toString());
             }
