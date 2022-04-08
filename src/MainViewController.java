@@ -70,7 +70,10 @@ public class MainViewController {
 
                 // FoodItem food = new Fries(id, desc, discount);
                 // order.add(food);
-                FoodItem food = new FoodItem(id, desc, discount, new String[]{"N/A"});
+                String ingredients = view.getFldIngredients().getText();
+                String[] ingredientsArray = ingredients.split(",");
+                FoodItem food = new FoodItem(id, desc, discount, new String[]{""});
+                food.addIngredients(ingredientsArray);
                 order.add(food);
                 view.getOrderItemsDisplay().setText(order.completeOrder().toString());
             }
