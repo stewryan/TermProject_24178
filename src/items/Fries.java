@@ -1,6 +1,6 @@
 package items;
 
-public class Fries extends FoodItem implements MultiSize{
+public class Fries extends FoodItem implements MultiSize {
     
     private Size size;
 
