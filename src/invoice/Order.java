@@ -25,7 +25,7 @@ public class Order {
         String menu = "";
 
         for (int i = 0; i < items.size(); i++) {
-            menu += "($" + items.get(i).getPrice() + ") Item [" + items.get(i).getID() + "]: " + items.get(i) + "\n";
+            menu += "($" + items.get(i).getPrice() + ") Item [" + i + "]: " + items.get(i) + "\n";
         }
 
         return menu;
