@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class Order {
 
-    private ArrayList<MenuItem> items = new ArrayList<>();
+    //TODO Make this private after
+    public ArrayList<MenuItem> items = new ArrayList<>();
     
     public void add(MenuItem item) {
         items.add(item);

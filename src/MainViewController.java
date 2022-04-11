@@ -8,7 +8,11 @@ import javafx.event.EventHandler;
 
 public class MainViewController {
 
-    Order order;
+    private static Order order;
+
+    public Order getOrder() {
+        return order;
+    }
 
     EditView editView = new EditView();
 
@@ -119,6 +123,8 @@ public class MainViewController {
         });
 
         view.getBtnEdit().setOnAction(e->{
+            editView.setOrder(order);
+            editView.setView(view);
             editView.show();
 
         });

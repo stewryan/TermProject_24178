@@ -1,3 +1,4 @@
+import invoice.Order;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
@@ -33,6 +34,20 @@ public class EditView extends Stage {
     Button btnBack = new Button("BACK");
     Button btnDelete = new Button("DELETE");
 
+    //Order To deal with
+    Order order;
+
+    //View to deal with
+    MainView view;
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public void setView(MainView view) {
+        this.view = view;
+    }
+
     //Method to populate the Hboxes and Vboxes
     //TODO Needs styling and organizing but it works under the weird circumstances speficied above
     public EditView(){
@@ -40,7 +55,7 @@ public class EditView extends Stage {
         // code to create components and do all the layout
         VBox pane = new VBox();
 
-        //Hbox Options
+        //HBox Options
         HBox rowOptions = new HBox();
 
         rowOptions.setSpacing(20);
@@ -63,6 +78,18 @@ public class EditView extends Stage {
         btnBack.setOnAction(e->{
             this.close();
         });
+
+        btnDelete.setOnAction(e -> {
+
+           try {
+              int idToDelete = Integer.parseInt(fldIdInput.getText());
+              order.getItems().remove(idToDelete);
+              view.getOrderItemsDisplay().setText(order.completeOrder().toString());
+
+           } catch (Exception ex){
+              ex.printStackTrace();
+           }
+       });
     }
 
 
