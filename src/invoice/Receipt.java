@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Receipt {
     
     private ArrayList<MenuItem> items = new ArrayList<>();
-    private static int orderNumber = 0; // static counter starting at 0, change to read from last receipt in file later
+    private int orderNumber; // static counter starting at 0, change to read from last receipt in file later
     private double totalPrice;
 
     public Receipt(ArrayList<MenuItem> items, double price) {
@@ -19,9 +19,17 @@ public class Receipt {
             this.items.add(item);
         }
 
-        this.orderNumber++;
+        this.orderNumber = 0; // set in code based on reading file of previous orders?
         this.totalPrice = price;
 
+    }
+
+    public int getOrderNumber() {
+        return this.orderNumber;
+    }
+
+    public void setOrderNumber(int orderNum) { 
+        this.orderNumber = orderNum;
     }
 
     @Override
@@ -32,7 +40,7 @@ public class Receipt {
         menu += "----------------------------------------\n";
 
         for (int i = 0; i < items.size(); i++) {
-            menu += "($" + items.get(i).getPrice() + ") Item [" + items.get(i).getID() + "]: " + items.get(i) + "\n";
+            menu += "($" + items.get(i).getPrice() + ") Item [" + i + "]: " + items.get(i) + "\n";
         }
 
         menu += "----------------------------------------\n";
