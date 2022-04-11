@@ -1,5 +1,6 @@
 import com.sun.java.accessibility.util.EventID;
 import invoice.Order;
+import invoice.OrderList;
 import items.Drink;
 import items.Size;
 import javafx.application.Application;
@@ -22,16 +23,16 @@ public class POS extends Application {
     }
 
     public static void main(String[] args) {
-//        Order order = new Order();
-//
-//        Drink smallPepsi = new Drink(45, "Pepsi (S)", 0.98, Size.SMALL);
-//        Drink mediumPepsi = new Drink(46, "Pepsi (M)", 0.94, Size.MEDIUM);
-//        Drink largePepsi = new Drink(47, "Pepsi (L)", 0.92, Size.LARGE);
-//        order.add(smallPepsi);
-//        order.add(mediumPepsi);
-//        order.add(largePepsi);
-//
-//        System.out.println(order.completeOrder());
+        OrderList list = new OrderList();
+       Order order = new Order();
+
+       Drink smallPepsi = new Drink(45, "Pepsi (S)", 0.98, Size.SMALL);
+       Drink mediumPepsi = new Drink(46, "Pepsi (M)", 0.94, Size.MEDIUM);
+       Drink largePepsi = new Drink(47, "Pepsi (L)", 0.92, Size.LARGE);
+       order.add(smallPepsi);
+       order.add(mediumPepsi);
+       order.add(largePepsi);
+
 
         launch();
     }

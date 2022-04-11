@@ -69,7 +69,7 @@ public class MainViewController {
                 } else { //If it's not the case it's added
                     Drink drink = new Drink(id, desc, discount, size);
                     order.add(drink);
-                    view.getOrderItemsDisplay().setText(order.completeOrder().toString());
+                    view.getOrderItemsDisplay().setText(order.toString());
                 }
 
             } else if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 1){
@@ -109,7 +109,7 @@ public class MainViewController {
                     FoodItem food = new FoodItem(id, desc, discount, new String[]{""});
                     food.addIngredients(ingredientsArray);
                     order.add(food);
-                    view.getOrderItemsDisplay().setText(order.completeOrder().toString());
+                    view.getOrderItemsDisplay().setText(order.toString());
                 }
 
 
