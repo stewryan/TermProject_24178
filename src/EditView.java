@@ -84,7 +84,7 @@ public class EditView extends Stage {
            try {
               int idToDelete = Integer.parseInt(fldIdInput.getText());
               order.getItems().remove(idToDelete);
-              view.getOrderItemsDisplay().setText(order.completeOrder().toString());
+              view.getOrderItemsDisplay().setText(order.toString());
 
            } catch (Exception ex){
               ex.printStackTrace();

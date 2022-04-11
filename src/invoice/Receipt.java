@@ -24,13 +24,13 @@ public class Receipt {
 
     }
 
-    public int getOrderNumber() {
-        return this.orderNumber;
-    }
+    // public int getOrderNumber() {
+    //     return this.orderNumber;
+    // }
 
-    public void setOrderNumber(int orderNum) { 
-        this.orderNumber = orderNum;
-    }
+    // public void setOrderNumber(int orderNum) { 
+    //     this.orderNumber = orderNum;
+    // }
 
     @Override
     public String toString() {
