@@ -30,9 +30,8 @@ public class EditView extends Stage {
     TextArea itemEditDisplay = new TextArea();
     TextField fldIdInput = new TextField();
     Button btnEditProduct = new Button("MODIFY");
-    Button btnDeleteProduct = new Button("DELETE");
     Button btnBack = new Button("BACK");
-    private javafx.scene.control.Button btnDelete = new Button("DELETE");
+    Button btnDelete = new Button("DELETE");
 
     //Method to populate the Hboxes and Vboxes
     //TODO Needs styling and organizing but it works under the weird circumstances speficied above
@@ -41,14 +40,18 @@ public class EditView extends Stage {
         // code to create components and do all the layout
         VBox pane = new VBox();
 
+        //Hbox Options
+        HBox rowOptions = new HBox();
 
+        rowOptions.setSpacing(20);
+        rowOptions.getChildren().addAll(btnEditProduct, btnDelete, btnBack);
 
         //Not so sure what the hell is this but If it doesn't have this it doesn't work
-        pane.getChildren().addAll(lblTitle, itemEditDisplay, fldIdInput, btnEditProduct, btnBack);
+        pane.getChildren().addAll(lblTitle, itemEditDisplay, fldIdInput, rowOptions);
 
         //Disabled Display
         itemEditDisplay.setDisable(true);
-        itemEditDisplay.setText("Test");
+        itemEditDisplay.setText("Insert ID Bellow");
         itemEditDisplay.setPrefHeight(200);
         itemEditDisplay.prefHeightProperty().bind(itemEditDisplay.prefWidthProperty());
 

@@ -50,6 +50,10 @@ public class MainView {
 
 //    private Button btnDelete = new Button("DELETE");
     private Button btnEdit = new Button("EDIT");
+    private Button btnNext = new Button("Next");
+    private Button btnPrev = new Button("Prev");
+    private Button btnFirst = new Button("First");
+    private Button btnLast = new Button("Last");
 
     /***
      * RIght side ends
@@ -110,6 +114,19 @@ public class MainView {
     public Button getBtnEdit() {
         return btnEdit;
     }
+    public Button getBtnNext() {
+        return btnNext;
+    }
+    public Button getBtnFirst() {
+        return btnFirst;
+    }
+    public Button getBtnPrev() {
+        return btnPrev;
+    }
+    public Button getBtnLast() {
+        return btnLast;
+    }
+
     public Alert getAlertInfo() {
         return alertInfo;
     }
@@ -171,7 +188,7 @@ public class MainView {
         //order items Placeholder
         orderItemsDisplay.setPromptText("ORDER ITEMS HERE");
 
-        HBox rowItemsDisplayOptions = new HBox(btnEdit);
+        HBox rowItemsDisplayOptions = new HBox(btnFirst, btnPrev, btnEdit, btnNext, btnLast);
         rowItemsDisplayOptions.setAlignment(Pos.CENTER);
         rowItemsDisplayOptions.setSpacing(20);
 

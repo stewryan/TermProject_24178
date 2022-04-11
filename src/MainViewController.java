@@ -20,6 +20,8 @@ public class MainViewController {
 
         order = new Order();
 
+        view.getOrderItemsDisplay().prefWidthProperty().bind(view.getOrderItemsDisplay().prefHeightProperty());
+
         view.getCmbItemType().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
