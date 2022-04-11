@@ -59,10 +59,10 @@ public class Order {
         return menu;
     }
 
-    public Receipt completeOrder() {
-        Receipt newReceipt = new Receipt(items, getTotalPrice());
+    // public OrderList completeOrder() {
+    //     OrderList newReceipt = new OrderList(items, getTotalPrice());
 
-        return newReceipt;
-    }
+    //     return newReceipt;
+    // }
     
 }
