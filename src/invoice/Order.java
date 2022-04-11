@@ -12,6 +12,18 @@ public class Order {
         items.add(item);
     }
 
+    public void remove(MenuItem item) {
+        items.remove(item);
+    }
+    
+    public void remove(int index) { 
+        items.remove(index);
+    }
+
+    public ArrayList<MenuItem> getItems() { 
+        return this.items;
+    }
+
     public double getTotalPrice() {
         double total = 0;
         for (int i = 0; i < items.size(); i++) {
