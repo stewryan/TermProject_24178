@@ -125,7 +125,9 @@ public class MainViewController {
         view.getBtnEdit().setOnAction(e->{
             editView.setOrder(order);
             editView.setView(view);
+            editView.setController(this);
             editView.show();
+            editView.setHeight(150);
 
         });
 
