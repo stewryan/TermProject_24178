@@ -1,3 +1,5 @@
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -7,6 +9,10 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 import java.awt.*;
 import java.util.Collection;
@@ -20,11 +26,12 @@ public class EditView extends Stage {
      * javafx.scene.control.  <- This for ctrl+c ctrl+v when needed
      *
      */
-    javafx.scene.control.Label lblTitle = new javafx.scene.control.Label("EDIT A PRODUCT");
-    javafx.scene.control.TextArea itemEditDisplay = new javafx.scene.control.TextArea();
-    javafx.scene.control.TextField fldIdInput = new javafx.scene.control.TextField();
-    javafx.scene.control.Button btnEditProduct = new javafx.scene.control.Button("EDIT PRODUCT WITH THIS ID");
-    javafx.scene.control.Button btnBack = new javafx.scene.control.Button("BACK");
+    Label lblTitle = new Label("EDIT A PRODUCT");
+    TextArea itemEditDisplay = new TextArea();
+    TextField fldIdInput = new TextField();
+    Button btnEditProduct = new Button("MODIFY");
+    Button btnBack = new Button("BACK");
+    Button btnDelete = new Button("DELETE");
 
     //Method to populate the Hboxes and Vboxes
     //TODO Needs styling and organizing but it works under the weird circumstances speficied above
@@ -33,9 +40,22 @@ public class EditView extends Stage {
         // code to create components and do all the layout
         VBox pane = new VBox();
 
+        //Hbox Options
+        HBox rowOptions = new HBox();
+
+        rowOptions.setSpacing(20);
+        rowOptions.getChildren().addAll(btnEditProduct, btnDelete, btnBack);
+
         //Not so sure what the hell is this but If it doesn't have this it doesn't work
-        pane.getChildren().addAll(lblTitle, itemEditDisplay, fldIdInput, btnEditProduct, btnBack);
-        Scene scene = new Scene(pane);
+        pane.getChildren().addAll(lblTitle, itemEditDisplay, fldIdInput, rowOptions);
+
+        //Disabled Display
+        itemEditDisplay.setDisable(true);
+        itemEditDisplay.setText("Insert ID Bellow");
+        itemEditDisplay.setPrefHeight(200);
+        itemEditDisplay.prefHeightProperty().bind(itemEditDisplay.prefWidthProperty());
+
+        Scene scene = new Scene(pane, 200, 200);
         this.setScene(scene);
         this.setTitle("Title of Second Window");
         // use initModality if you want this Stage to block the app

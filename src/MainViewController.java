@@ -20,6 +20,8 @@ public class MainViewController {
 
         order = new Order();
 
+        view.getOrderItemsDisplay().prefWidthProperty().bind(view.getOrderItemsDisplay().prefHeightProperty());
+
         view.getCmbItemType().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -95,19 +97,25 @@ public class MainViewController {
                 String[] ingredientsArray = ingredients.split(",");
 
                 // Create Food Item
-                FoodItem food = new FoodItem(id, desc, discount, new String[]{""});
-                food.addIngredients(ingredientsArray);
-                order.add(food);
-                view.getOrderItemsDisplay().setText(order.completeOrder().toString());
+                //If no description is entered alert info triggered, and nothing is added
+                if (desc.trim() == "" || desc == null){
+                    view.getAlertInfo().showAndWait();
 
-                //Reseting all variables to nothing for next add
-                view.getCmbItemType().getSelectionModel().select(-1);
-                view.getFldItemName().setText("");
-                view.getFldIngredients().setText("");
-                view.getCmbSize().getSelectionModel().selectFirst();
+                } else { //If it's not the case it's added
+                    FoodItem food = new FoodItem(id, desc, discount, new String[]{""});
+                    food.addIngredients(ingredientsArray);
+                    order.add(food);
+                    view.getOrderItemsDisplay().setText(order.completeOrder().toString());
+                }
 
 
             }
+
+            //Reseting all variables to nothing for next add
+            view.getCmbItemType().getSelectionModel().select(-1);
+            view.getFldItemName().setText("");
+            view.getFldIngredients().setText("");
+            view.getCmbSize().getSelectionModel().selectFirst();
         });
 
         view.getBtnEdit().setOnAction(e->{

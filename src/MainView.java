@@ -48,8 +48,12 @@ public class MainView {
 
     private TextArea orderItemsDisplay = new TextArea();
 
-    private Button btnDelete = new Button("DELETE");
+//    private Button btnDelete = new Button("DELETE");
     private Button btnEdit = new Button("EDIT");
+    private Button btnNext = new Button("Next");
+    private Button btnPrev = new Button("Prev");
+    private Button btnFirst = new Button("First");
+    private Button btnLast = new Button("Last");
 
     /***
      * RIght side ends
@@ -57,7 +61,7 @@ public class MainView {
      * Alerts Start
      */
 
-    private Alert alertInfo = new Alert(Alert.AlertType.ERROR);
+    private Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
 
     /**
      * Alerts end
@@ -104,12 +108,25 @@ public class MainView {
     public TextArea getOrderItemsDisplay() {
         return orderItemsDisplay;
     }
-    public Button getBtnDelete() {
-        return btnDelete;
-    }
+//    public Button getBtnDelete() {
+//        return btnDelete;
+//    }
     public Button getBtnEdit() {
         return btnEdit;
     }
+    public Button getBtnNext() {
+        return btnNext;
+    }
+    public Button getBtnFirst() {
+        return btnFirst;
+    }
+    public Button getBtnPrev() {
+        return btnPrev;
+    }
+    public Button getBtnLast() {
+        return btnLast;
+    }
+
     public Alert getAlertInfo() {
         return alertInfo;
     }
@@ -141,7 +158,7 @@ public class MainView {
         //Left side Content
         HBox rowItemType = new HBox(lblItemType, cmbItemType);
         rowItemType.setSpacing(10);
-        cmbItemType.getSelectionModel().selectFirst();
+        cmbItemType.getSelectionModel().select(-1);
 
         HBox rowItemName = new HBox(lblItemName, fldItemName);
         rowItemName.setSpacing(2);
@@ -171,7 +188,7 @@ public class MainView {
         //order items Placeholder
         orderItemsDisplay.setPromptText("ORDER ITEMS HERE");
 
-        HBox rowItemsDisplayOptions = new HBox(btnDelete, btnEdit);
+        HBox rowItemsDisplayOptions = new HBox(btnFirst, btnPrev, btnEdit, btnNext, btnLast);
         rowItemsDisplayOptions.setAlignment(Pos.CENTER);
         rowItemsDisplayOptions.setSpacing(20);
 
