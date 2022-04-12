@@ -16,6 +16,13 @@ public class FoodItem extends MenuItem {
         this.addIngredients(ingredients);
     }
 
+    public void setIngredients(String[] items) {
+        ingredients.clear();
+        for (String item: items) {
+            ingredients.add(item.toLowerCase());
+        }
+    }
+
     public void addIngredients(String[] items) {
         for (String item: items) {
             ingredients.add(item.toLowerCase());

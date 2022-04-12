@@ -1,5 +1,7 @@
 import com.sun.tools.javac.Main;
 import invoice.Order;
+import items.FoodItem;
+import items.Size;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -154,9 +156,45 @@ public class EditView extends Stage {
 
 
         btnEditProduct.setOnAction(e->{
+            pane.getChildren().add(leftSide);
+            controller.editView.setHeight(280);
+        });
 
-        pane.getChildren().add(leftSide);
-        controller.editView.setHeight(280);
+        btnConfirm.setOnAction(e->{
+            //Ingredients
+            String ingredients = fldIngredients.getText();
+
+            try {
+
+                int idToModify = Integer.parseInt(fldIdInput.getText());
+                String newDesc = fldItemName.getText();
+
+                Size newSize;
+                switch (view.getCmbSize().getSelectionModel().getSelectedIndex()) {
+                    case 0:
+                        newSize = Size.SMALL;
+                        break;
+                    case 1:
+                        newSize = Size.MEDIUM;
+                        break;
+                    case 2:
+                        newSize = Size.LARGE;
+                        break;
+                    default:
+                        newSize = Size.SMALL;
+                        break;
+                }
+
+                if (newDesc.trim() == "" || newDesc == null){
+                    view.getAlertInfo().showAndWait();
+                } else { //If it's not the case it's updated
+                    order.updateOrder(idToModify, newDesc, ingredients, newSize, cmbItemType);
+                    view.getOrderItemsDisplay().setText(order.toString());
+                }
+            } catch (Exception ex) {
+                view.getAlertInfo().setContentText("Fields Can't be Empty");
+                view.getAlertInfo().showAndWait();
+            }
 
         });
     }

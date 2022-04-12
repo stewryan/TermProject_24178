@@ -1,17 +1,37 @@
 package invoice;
 
+import items.Drink;
+import items.FoodItem;
 import items.MenuItem;
+import items.Size;
+import javafx.scene.control.ComboBox;
 
 import java.util.ArrayList;
 
 public class Order {
 
     //TODO Make this private after
-    public ArrayList<MenuItem> items = new ArrayList<>();
+    private ArrayList<MenuItem> items = new ArrayList<>();
     private int orderNumber;
 
     public int getOrderNumber() {
         return this.orderNumber;
+    }
+
+    //TODO CORRECT
+    public void updateOrder(int index, String desc, String ingredients, Size size, ComboBox cmbSelectedType){
+//        String ingredientsString = vi.getFldIngredients().getText();
+        String[] ingredientsArray = ingredients.split(",");
+
+        MenuItem itemToChange = items.get(index);
+        itemToChange.setDescription(desc);
+        if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 0){
+            ((Drink)itemToChange).setSize(size);
+        } else if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 1){
+            ((FoodItem)itemToChange).setIngredients(ingredientsArray);
+        }
+
+//        itemToChange.setSize(size);
     }
 
     public void setOrderNumber(int orderNum) { 
