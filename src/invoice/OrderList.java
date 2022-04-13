@@ -85,7 +85,9 @@ public class OrderList {
 
             // adding orders to the array from the file
             for (Order order: ordersFromFile) {
-                orders.add(order);
+                if (!order.getItems().isEmpty()) { // avoid saving completely empty orders
+                    orders.add(order);
+                }
             }
 
         } catch (IOException ex) {
