@@ -21,7 +21,7 @@ public class MainView {
      */
     //Type Item and respective Drop down list
     private Label lblItemType = new Label("Item Type");
-    private String[] item_type = {"Drink", "Food"};
+    private String[] item_type = {"Drink", "Food", "Side"};
     private ComboBox cmbItemType = new ComboBox<>(FXCollections.observableArrayList(item_type));
 
     //Item name with it's text field

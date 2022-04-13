@@ -48,7 +48,7 @@ public class FoodItem extends MenuItem {
     @Override
     public String toString() {
 
-        return "(" + this.getPrice() + ") Item [" + this.getID() + "]: " + this.getDescription() + "\n\t Ingredients: " + this.getIngredients();
+        return this.getDescription() + "\n\t Ingredients: " + this.getIngredients();
 
     }
 

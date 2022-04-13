@@ -2,6 +2,7 @@ import invoice.Order;
 import items.Drink;
 import items.FoodItem;
 // import items.Fries;
+import items.SideItem;
 import items.Size;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -113,6 +114,42 @@ public class MainViewController {
                 }
 
 
+
+
+            } else if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 2){
+
+                //Grabbing variables from mainView
+                int id = 45;
+                String desc = view.getFldItemName().getText();
+                double discount = 0.98;
+                Size size;
+                switch (view.getCmbSize().getSelectionModel().getSelectedIndex()) {
+                    case 0:
+                        size = Size.SMALL;
+                        break;
+                    case 1:
+                        size = Size.MEDIUM;
+                        break;
+                    case 2:
+                        size = Size.LARGE;
+                        break;
+                    default:
+                        size = Size.SMALL;
+                        break;
+                }
+                //
+                String ingredients = view.getFldIngredients().getText();
+                String[] ingredientsArray = ingredients.split(",");
+
+                if (desc.trim() == "" || desc == null){
+                    view.getAlertInfo().showAndWait();
+
+                } else { //If it's not the case it's added
+                    SideItem side = new SideItem(45, desc, discount, size);
+                    side.addIngredients(ingredientsArray);
+                    order.add(side);
+                    view.getOrderItemsDisplay().setText(order.toString());
+                }
             }
 
             //Reseting all variables to nothing for next add
@@ -120,16 +157,17 @@ public class MainViewController {
             view.getFldItemName().setText("");
             view.getFldIngredients().setText("");
             view.getCmbSize().getSelectionModel().selectFirst();
-        });
+
+        });//Closes Button Add
 
         view.getBtnEdit().setOnAction(e->{
             editView.setOrder(order);
             editView.setView(view);
             editView.setController(this);
             editView.show();
-            editView.setHeight(150);
 
-        });
+        }); // Closes Button Edit
+        editView.setHeight(150); // Temporary first height
 
 
 
