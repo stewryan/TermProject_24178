@@ -39,7 +39,7 @@ public class FoodItem extends MenuItem {
 
     @Override
     public double getPrice() {
-        return PriceCalculator.calculateFoodPrice(this);
+        return ValueCalculator.calculateFoodPrice(this);
     }
     public String getIngredients() {
         String output = "";
@@ -49,6 +49,8 @@ public class FoodItem extends MenuItem {
         return output;
     }
 
+    
+
     public ArrayList<String> getIngredientsArrayList() {
         return this.ingredients;
     }
@@ -56,7 +58,7 @@ public class FoodItem extends MenuItem {
     @Override
     public String toString() {
 
-        return this.getDescription() + "\n\t Ingredients: " + this.getIngredients();
+        return this.getDescription() + " | Contains " + this.getCalories() + " calories." + "\n\t Ingredients: " + this.getIngredients();
 
     }
 
