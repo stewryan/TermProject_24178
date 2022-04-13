@@ -12,6 +12,7 @@ public class MainViewController {
 
     private Order order;
     private OrderList list = new OrderList();
+    private int currentVariableNumber;
 
     public Order getOrder() {
         return order;
@@ -27,6 +28,8 @@ public class MainViewController {
 
         list.add(new Order());
         order = list.getOrders().get(list.getOrders().size() - 1);
+
+        currentVariableNumber = list.getOrders().size();
 
         view.getOrderItemsDisplay().prefWidthProperty().bind(view.getOrderItemsDisplay().prefHeightProperty());
 
@@ -167,6 +170,7 @@ public class MainViewController {
         }); // Closes Button Edit
         editView.setHeight(150); // Temporary first height
 
+        //TODO de-comment saveToFile();
         //Save and Exit
         view.getBtnSaveExit().setOnAction(e -> {
 //            orderList.saveToFile();
@@ -175,17 +179,62 @@ public class MainViewController {
 
         //New Order
         view.getBtnNewOrder().setOnAction(e -> {
-            list.add(new Order());
-            order = list.getOrders().get(list.getOrders().size() - 1);
+            if (order.getItems().size() < 1){
+                view.getAlertInfo().setContentText("Empty orders Can't be added");
+                view.getAlertInfo().showAndWait();
+            } else {
+                list.add(new Order());
+                order = list.getOrders().get(list.getOrders().size() - 1);
 
-            int lastItem = list.getOrders().size() - 2;
-            int newOrderNumber = list.getOrders().get(lastItem).getOrderNumber() + 1;
-            order.setOrderNumber(newOrderNumber);
+                int lastItem = list.getOrders().size() - 2;
+                int newOrderNumber = list.getOrders().get(lastItem).getOrderNumber() + 1;
+                order.setOrderNumber(newOrderNumber);
 
-            System.out.println(list.getOrders().get(lastItem));
+//            System.out.println(list.getOrders().get(lastItem));
+                view.getOrderItemsDisplay().setText(order.toString());
+            }
+        }); // Close btnNewOrder
+
+//     FIRST PREV NEXT LAST Buttons section
+        view.getBtnFirst().setOnAction(e->{
+            currentVariableNumber = 0;
+            order = list.getOrders().get(0);
+            //Update Line
             view.getOrderItemsDisplay().setText(order.toString());
         });
 
-    }
+        view.getBtnLast().setOnAction(e->{
+            currentVariableNumber = list.getOrders().size() - 1;
+
+            order = list.getOrders().get(list.getOrders().size() - 1);
+            //Update Line
+            view.getOrderItemsDisplay().setText(order.toString());
+        });
+
+        view.getBtnPrev().setOnAction(e->{
+            if (currentVariableNumber > 0){
+                --currentVariableNumber;
+                order = list.getOrders().get(currentVariableNumber);
+                //Update Line
+                view.getOrderItemsDisplay().setText(order.toString());
+            } else {
+                view.getAlertInfo().setContentText("This is the first record");
+                view.getAlertInfo().showAndWait();
+            }
+        });
+
+        view.getBtnNext().setOnAction(e->{
+            if (currentVariableNumber < list.getOrders().size() - 1){
+                ++currentVariableNumber;
+                order = list.getOrders().get(currentVariableNumber);
+                //Update Line
+                view.getOrderItemsDisplay().setText(order.toString());
+            }  else {
+                view.getAlertInfo().setContentText("This is the last record");
+                view.getAlertInfo().showAndWait();
+            }
+
+        });
+    } // Set view Closes
 
 }
