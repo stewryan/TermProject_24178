@@ -41,11 +41,9 @@ public class EditView extends Stage {
     public void setController(MainViewController controller) {
         this.controller = controller;
     }
-
     public void setOrder(Order order) {
         this.order = order;
     }
-
     public void setView(MainView view) {
         this.view = view;
     }

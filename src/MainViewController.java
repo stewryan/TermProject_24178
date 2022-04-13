@@ -98,8 +98,6 @@ public class MainViewController {
                         break;
                 }
 
-                // FoodItem food = new Fries(id, desc, discount);
-                // order.add(food);
                 //Get ingredients split the hole string by comas and store them
                 String ingredients = view.getFldIngredients().getText();
                 String[] ingredientsArray = ingredients.split(",");
@@ -115,9 +113,6 @@ public class MainViewController {
                     order.add(food);
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
-
-
-
 
             } else if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 2){
 
@@ -190,11 +185,6 @@ public class MainViewController {
             System.out.println(list.getOrders().get(lastItem));
             view.getOrderItemsDisplay().setText(order.toString());
         });
-
-
-
-
-
 
     }
 
