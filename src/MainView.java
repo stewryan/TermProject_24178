@@ -16,6 +16,10 @@ public class MainView {
     //Title
     private Label lblTitle = new Label("Create an Order");
 
+    //Row Search
+    private TextField fldSearch = new TextField();
+    private Button btnSearch = new Button("Search");
+
     /***
      * Left side Starts
      */
@@ -130,7 +134,12 @@ public class MainView {
     public Button getBtnLast() {
         return btnLast;
     }
-
+    public Button getBtnSearch() {
+        return btnSearch;
+    }
+    public TextField getFldSearch() {
+        return fldSearch;
+    }
     public Alert getAlertInfo() {
         return alertInfo;
     }
@@ -178,8 +187,14 @@ public class MainView {
         HBox rowSaveExit = new HBox(btnSaveExit);
         HBox rowNewOrder = new HBox(btnNewOrder);
 
+        //Row Search
+        HBox rowSearch = new HBox();
+        rowSearch.getChildren().addAll(fldSearch, btnSearch);
+        rowSearch.setAlignment(Pos.CENTER_RIGHT);
+
         //Right side content
         HBox rowItemDisplay = new HBox(orderItemsDisplay);
+        orderItemsDisplay.setEditable(false);
         //order items Placeholder
         orderItemsDisplay.setPromptText("ORDER ITEMS HERE");
 
@@ -202,7 +217,7 @@ public class MainView {
         topPane.setAlignment(Pos.CENTER);
 
         //Set the "everything"
-        paneFull.getChildren().addAll(topPane, bottomPane);
+        paneFull.getChildren().addAll(topPane,rowSearch, bottomPane);
 
         //Alert box for empty fields
         alertInfo.setContentText("None of the fields can be empty");
