@@ -1,9 +1,6 @@
 package invoice;
 
-import items.Drink;
-import items.FoodItem;
-import items.MenuItem;
-import items.Size;
+import items.*;
 import javafx.scene.control.ComboBox;
 
 import java.io.Serializable;
@@ -33,6 +30,8 @@ public class Order implements Serializable {
             ((Drink) itemToChange).setSize(size);
         } else if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 1) {
             ((FoodItem) itemToChange).setIngredients(ingredientsArray);
+        } else if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 2) {
+            ((SideItem) itemToChange).setSize(size);
         }
 
         // itemToChange.setSize(size);
