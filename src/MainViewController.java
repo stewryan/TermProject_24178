@@ -203,8 +203,9 @@ public class MainViewController {
 
         //New Order
         view.getBtnNewOrder().setOnAction(e -> {
-            if (order.getItems().size() < 1){
-                view.getAlertInfo().setContentText("Empty orders Can't be added");
+            Order lastOrder = list.getOrders().get(list.getOrders().size() - 1);
+            if (lastOrder.getItems().size() < 1){
+                view.getAlertInfo().setContentText("The LAST order is empty. Add to it first!");
                 view.getAlertInfo().showAndWait();
             } else {
                 list.add(new Order());
