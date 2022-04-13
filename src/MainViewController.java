@@ -4,7 +4,6 @@ import invoice.Order;
 import invoice.OrderList;
 import items.Drink;
 import items.FoodItem;
-// import items.Fries;
 import items.SideItem;
 import items.Size;
 import javafx.event.ActionEvent;
@@ -32,21 +31,25 @@ public class MainViewController {
 
     void setView(MainView view) {
 
+        // Load the file into the ArrayList within OrderList when the program opens
         try {
             list.loadFromFile();
         } catch (IOException e1) {
             System.out.println("Caught IOException loading file at startup");
         }
 
+        // Create the inital order (inside of the list), then refer to it using the list index
         list.add(new Order());
         order = list.getOrders().get(list.getOrders().size() - 1);
 
+        // Set the order number only IF there are more orders behind it. Will default to 0 otherwise (declared in Order class)
         if (list.getOrders().size() > 1) {
             lastItem = list.getOrders().size() - 2;
             newOrderNumber = list.getOrders().get(lastItem).getOrderNumber() + 1;
             order.setOrderNumber(newOrderNumber);
         }
 
+        // variable holding the current "page" for viewing records
         currentVariableNumber = list.getOrders().size();
 
         view.getOrderItemsDisplay().prefWidthProperty().bind(view.getOrderItemsDisplay().prefHeightProperty());
@@ -55,13 +58,20 @@ public class MainViewController {
         view.getCmbItemType().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 0){
+                int selection = view.getCmbItemType().getSelectionModel().getSelectedIndex();
+                if (selection == 0){
                     view.getFldIngredients().setDisable(true);
                     view.getFldIngredients().setPromptText("No ingredients available");
+                    view.getCmbSize().setDisable(false);
 
                 } else {
                     view.getFldIngredients().setDisable(false);
                     view.getFldIngredients().setPromptText("");
+                    if (selection == 1) {
+                        view.getCmbSize().setDisable(true);
+                    } else {
+                        view.getCmbSize().setDisable(false);
+                    }
                 }
             }
         });
