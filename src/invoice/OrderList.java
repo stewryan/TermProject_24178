@@ -21,7 +21,7 @@ import java.util.Random;
  */
 public class OrderList {
     
-    public ArrayList<Order> orders = new ArrayList<>();
+    private ArrayList<Order> orders = new ArrayList<>();
 
     public void add(Order order) {
         orders.add(order);
@@ -33,6 +33,10 @@ public class OrderList {
 
     public void remove(int index) {
         orders.remove(index);
+    }
+
+    public ArrayList<Order> getOrders() {
+        return orders;
     }
 
     public Order searchByOrderNumber(int orderNum) {

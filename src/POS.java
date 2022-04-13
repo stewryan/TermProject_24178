@@ -28,7 +28,21 @@ public class POS extends Application {
     public static void main(String[] args) {
 
         OrderList list = new OrderList();
+        try {
+            //list.saveToFile();
+            list.loadFromFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Order order = new Order();
+        Order order2 = new Order();
+        if (!list.getOrders().isEmpty()) {
+            order.setOrderNumber(list.getOrders().get(list.getOrders().size() - 1).getOrderNumber() + 1);
+            list.add(order);
+            order2.setOrderNumber(list.getOrders().get(list.getOrders().size() - 1).getOrderNumber() + 1);
+            list.add(order2);
+        }
 
         Drink smallPepsi = new Drink(45, "Pepsi (S)", 0.98, Size.SMALL);
         Drink mediumPepsi = new Drink(46, "Pepsi (M)", 0.94, Size.MEDIUM);
@@ -38,15 +52,9 @@ public class POS extends Application {
         order.add(largePepsi);
         FoodItem burger = new FoodItem(0, "Hamburger", 0.0, new String[] { "Patty, Bun, Tomato, Lettuce" });
         order.add(burger);
-        list.add(order);
-        try {
-            //list.saveToFile();
-            list.loadFromFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // list.add(order);
 
-        System.out.println(list.orders);
+        System.out.println(list.getOrders());
 
         launch();
 
