@@ -68,13 +68,14 @@ public abstract class MenuItem implements Serializable {
         return this.maxDiscount;
     }
 
+    /**
+     * 
+     * @return the generated value of calories. If it is a Food Item, will be based off of number of ingredients
+     * If it is a Drink Item, will be based off Size
+     */
     public int getCalories() {
         return ValueCalculator.calculateCalories(this);
     }
-    // public void setCalories(int calories) {
-    //     this.calories = calories;
-    // }
-
 
     @Override
     public String toString() {

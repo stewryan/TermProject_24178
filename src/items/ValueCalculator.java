@@ -1,12 +1,14 @@
 package items;
 
-// not sure about this class, just having it here for now to figure out how to calcuate price of an item
+/**
+ * A class that calculates various values for items on the menu such as PRICE and CALORIES
+ */
 public class ValueCalculator {
     
-    private static final double FOOD_PRICE_MULTIPLIER = 1.75;
-    private static final double DRINK_PRICE_MULTIPLIER = 0.50;
+    private static final double FOOD_PRICE_MULTIPLIER = 1.75; // base multiplier for the price of a food item
+    private static final double DRINK_PRICE_MULTIPLIER = 0.50;// base multiplier for the price of a drink item
 
-    private static final double ITEM_CALORIES_MULTIPLIER = 25;
+    private static final double ITEM_CALORIES_MULTIPLIER = 25;// base multiplier for the calories of any item
 
     public static double calculateFoodPrice(FoodItem item) {
 

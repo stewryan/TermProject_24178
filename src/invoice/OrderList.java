@@ -8,11 +8,14 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
- * invoice.Receipt is created when an invoice.Order.java has finished? Just ideas right now
+ * A class that models a list of records, that saves to a file once the program is done running.
+ * When the program starts, it loads all the orders from the file and adds them to the arraylist.
+ * 
  */
 public class OrderList {
     
     private ArrayList<Order> orders = new ArrayList<>();
+    private String fileName = "data\\orders.dat"; // the name of the file to save to/load from
 
     public void add(Order order) {
         orders.add(order);
@@ -30,6 +33,11 @@ public class OrderList {
         return orders;
     }
 
+    /**
+     * Allows the user to search for an order by the number of the order
+     * @param orderNum
+     * @return
+     */
     public Order searchByOrderNumber(int orderNum) {
         for (Order order: orders) {
             if (order.getOrderNumber() == orderNum) {
@@ -40,15 +48,17 @@ public class OrderList {
         return null; // nothing found
     }
 
-    String fileName = "data\\orders.dat";
-
+    /**
+     * Saves the data in orders ArrayList to a file using Serialization.
+     * 
+     */
     public void saveToFile() { 
 
         try {
             FileOutputStream file = new FileOutputStream(fileName);
             ObjectOutputStream out = new ObjectOutputStream(file);
 
-            out.writeObject(orders);
+            out.writeObject(orders); // write the arraylist to the file
 
             file.close();
             out.close();
@@ -59,6 +69,11 @@ public class OrderList {
 
     }
 
+    /**
+     * Loads the data from the file and places it into the orders ArrayList using Deserialization
+     * 
+     * @throws IOException
+     */
     public void loadFromFile() throws IOException {
 
         try {
@@ -68,6 +83,7 @@ public class OrderList {
 
             ArrayList<Order> ordersFromFile = (ArrayList<Order>) in.readObject();
 
+            // adding orders to the array from the file
             for (Order order: ordersFromFile) {
                 orders.add(order);
             }

@@ -19,7 +19,14 @@ public class Order implements Serializable {
         return this.orderNumber;
     }
 
-    // TODO CORRECT
+    /**
+     * Updates the order, used in the "Edit" window of the menu
+     * @param index
+     * @param desc
+     * @param ingredients
+     * @param size
+     * @param cmbSelectedType
+     */
     public void updateOrder(int index, String desc, String ingredients, Size size, ComboBox cmbSelectedType) {
         //Array Creation for Split and Usage
         String[] ingredientsArray = ingredients.split(",");
