@@ -10,7 +10,7 @@ public class SideItem extends FoodItem implements MultiSize {
     private Size size;
 
     public SideItem(int id, String desc, double discount, Size size) {
-        super(9, "French items.Fries", 0.02, new String[]{});
+        super(id, desc, 0.02, new String[]{});
         this.size = size;
     }
 
@@ -19,6 +19,13 @@ public class SideItem extends FoodItem implements MultiSize {
     }
     public Size getSize() {
         return this.size;
+    }
+
+    @Override
+    public String toString() {
+
+        return "(Side) " + this.getSize() + " " + this.getDescription() + "\n\t Ingredients: " + this.getIngredients();
+
     }
 
 }
