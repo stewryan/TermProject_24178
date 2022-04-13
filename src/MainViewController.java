@@ -7,6 +7,7 @@ import items.SideItem;
 import items.Size;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.input.KeyCode;
 
 public class MainViewController {
 
@@ -44,6 +45,18 @@ public class MainViewController {
                     view.getFldIngredients().setDisable(false);
                     view.getFldIngredients().setPromptText("");
                 }
+            }
+        });
+
+        //This section is triggered by an ENTER key
+        view.getFldItemName().setOnKeyPressed(e->{
+            if( e.getCode() == KeyCode.ENTER ) {
+                view.getBtnAdd().fire();
+            }
+        });
+        view.getFldIngredients().setOnKeyPressed(e->{
+            if( e.getCode() == KeyCode.ENTER ) {
+                view.getBtnAdd().fire();
             }
         });
 
@@ -235,6 +248,19 @@ public class MainViewController {
             }
 
         });
+
+        //TODO Search Function
+        //Fired when Enter is in the field
+        view.getFldSearch().setOnKeyPressed(e->{
+            if(e.getCode() == KeyCode.ENTER) {
+                view.getBtnSearch().fire();
+            }
+        });
+
+        view.getBtnSearch().setOnAction(e->{
+            //Code here...
+        });
+
     } // Set view Closes
 
 }
