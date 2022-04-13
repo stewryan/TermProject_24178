@@ -6,9 +6,10 @@ import items.MenuItem;
 import items.Size;
 import javafx.scene.control.ComboBox;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Order {
+public class Order implements Serializable {
 
     //TODO Make this private after
     private ArrayList<MenuItem> items = new ArrayList<>();

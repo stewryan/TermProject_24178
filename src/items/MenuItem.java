@@ -1,11 +1,13 @@
 package items;
 
+import java.io.Serializable;
+
 /**
  * A class that represents a generic menu item. (Not specifically food)
  * 
  * @author Ryan Stewart Apr 2022
  */
-public abstract class MenuItem {
+public abstract class MenuItem implements Serializable {
     
     private int id;
     private String description;

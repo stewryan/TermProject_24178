@@ -17,7 +17,7 @@ public class POS extends Application {
         MainView view = new MainView();
         MainViewController controller = new MainViewController(view);
 
-        //Insert Controller here
+        // Insert Controller here
         Scene scene = new Scene(view.getView());
         primaryStage.setTitle("POS MAIN MENU");
         primaryStage.setScene(scene);
@@ -28,26 +28,28 @@ public class POS extends Application {
     public static void main(String[] args) {
 
         OrderList list = new OrderList();
-       Order order = new Order();
+        Order order = new Order();
 
-       Drink smallPepsi = new Drink(45, "Pepsi (S)", 0.98, Size.SMALL);
-       Drink mediumPepsi = new Drink(46, "Pepsi (M)", 0.94, Size.MEDIUM);
-       Drink largePepsi = new Drink(47, "Pepsi (L)", 0.92, Size.LARGE);
-       order.add(smallPepsi);
-       order.add(mediumPepsi);
-       order.add(largePepsi);
-       FoodItem burger = new FoodItem(0, "Hamburger", 0.0, new String[]{"Patty, Bun, Tomato, Lettuce"});
-       order.add(burger);
-       list.add(order);
-       try {
-        list.saveToFile();
-    } catch (IOException e) {
-        // TODO Auto-generated catch block
-        System.out.println("IOException");
-    }
+        Drink smallPepsi = new Drink(45, "Pepsi (S)", 0.98, Size.SMALL);
+        Drink mediumPepsi = new Drink(46, "Pepsi (M)", 0.94, Size.MEDIUM);
+        Drink largePepsi = new Drink(47, "Pepsi (L)", 0.92, Size.LARGE);
+        order.add(smallPepsi);
+        order.add(mediumPepsi);
+        order.add(largePepsi);
+        FoodItem burger = new FoodItem(0, "Hamburger", 0.0, new String[] { "Patty, Bun, Tomato, Lettuce" });
+        order.add(burger);
+        list.add(order);
+        try {
+            //list.saveToFile();
+            list.loadFromFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        System.out.println(list.orders);
 
         launch();
+
     }
 
 }
