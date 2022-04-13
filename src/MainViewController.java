@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 import invoice.Order;
 import invoice.OrderList;
 import items.Drink;
@@ -15,6 +17,9 @@ public class MainViewController {
     private OrderList list = new OrderList();
     private int currentVariableNumber;
 
+    private int lastItem;
+    private int newOrderNumber;
+
     public Order getOrder() {
         return order;
     }
@@ -25,10 +30,22 @@ public class MainViewController {
         setView(view);
     }
 
-    void setView(MainView view){
+    void setView(MainView view) {
+
+        try {
+            list.loadFromFile();
+        } catch (IOException e1) {
+            System.out.println("Caught IOException loading file at startup");
+        }
 
         list.add(new Order());
         order = list.getOrders().get(list.getOrders().size() - 1);
+
+        if (list.getOrders().size() > 1) {
+            lastItem = list.getOrders().size() - 2;
+            newOrderNumber = list.getOrders().get(lastItem).getOrderNumber() + 1;
+            order.setOrderNumber(newOrderNumber);
+        }
 
         currentVariableNumber = list.getOrders().size();
 
@@ -183,10 +200,9 @@ public class MainViewController {
         }); // Closes Button Edit
         editView.setHeight(150); // Temporary first height
 
-        //TODO de-comment saveToFile();
         //Save and Exit
         view.getBtnSaveExit().setOnAction(e -> {
-//            orderList.saveToFile();
+            list.saveToFile();
             System.exit(0);
         });
 
@@ -199,8 +215,8 @@ public class MainViewController {
                 list.add(new Order());
                 order = list.getOrders().get(list.getOrders().size() - 1);
 
-                int lastItem = list.getOrders().size() - 2;
-                int newOrderNumber = list.getOrders().get(lastItem).getOrderNumber() + 1;
+                lastItem = list.getOrders().size() - 2;
+                newOrderNumber = list.getOrders().get(lastItem).getOrderNumber() + 1;
                 order.setOrderNumber(newOrderNumber);
 
 //            System.out.println(list.getOrders().get(lastItem));
