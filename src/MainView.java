@@ -115,9 +115,6 @@ public class MainView {
     public TextArea getOrderItemsDisplay() {
         return orderItemsDisplay;
     }
-//    public Button getBtnDelete() {
-//        return btnDelete;
-//    }
     public Button getBtnEdit() {
         return btnEdit;
     }
@@ -137,8 +134,6 @@ public class MainView {
     public Alert getAlertInfo() {
         return alertInfo;
     }
-
-
 
     public MainView(){
         view = createView();
@@ -170,7 +165,6 @@ public class MainView {
         HBox rowItemName = new HBox(lblItemName, fldItemName);
         rowItemName.setSpacing(2);
 
-
         //Ingredients row show if it's food not drink
         HBox rowIngredients = new HBox(lblIngredients, fldIngredients);
         rowIngredients.setSpacing(2);
@@ -179,10 +173,9 @@ public class MainView {
         cmbSize.getSelectionModel().selectFirst();
         rowSize.setSpacing(40);
 
+        //Add save and newOrder
         HBox rowAddButton = new HBox(btnAdd);
-
         HBox rowSaveExit = new HBox(btnSaveExit);
-
         HBox rowNewOrder = new HBox(btnNewOrder);
 
         //Right side content
@@ -190,10 +183,10 @@ public class MainView {
         //order items Placeholder
         orderItemsDisplay.setPromptText("ORDER ITEMS HERE");
 
+        
         HBox rowItemsDisplayOptions = new HBox(btnFirst, btnPrev, btnEdit, btnNext, btnLast);
         rowItemsDisplayOptions.setAlignment(Pos.CENTER);
         rowItemsDisplayOptions.setSpacing(20);
-
 
         //Setting all the nodes fully
         leftSide.getChildren().addAll(rowItemType, rowItemName, rowIngredients, rowSize, rowAddButton, rowSaveExit, rowNewOrder);

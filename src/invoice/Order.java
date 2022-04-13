@@ -21,11 +21,13 @@ public class Order implements Serializable {
 
     // TODO CORRECT
     public void updateOrder(int index, String desc, String ingredients, Size size, ComboBox cmbSelectedType) {
-        // String ingredientsString = vi.getFldIngredients().getText();
+        //Array Creation for Split and Usage
         String[] ingredientsArray = ingredients.split(",");
 
         MenuItem itemToChange = items.get(index);
         itemToChange.setDescription(desc);
+
+        //Setting the specific conditions that updating will follow in case of each item.
         if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 0) {
             ((Drink) itemToChange).setSize(size);
         } else if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 1) {
@@ -34,7 +36,6 @@ public class Order implements Serializable {
             ((SideItem) itemToChange).setSize(size);
         }
 
-        // itemToChange.setSize(size);
     }
 
     public void setOrderNumber(int orderNum) {
@@ -81,11 +82,5 @@ public class Order implements Serializable {
 
         return menu;
     }
-
-    // public OrderList completeOrder() {
-    // OrderList newReceipt = new OrderList(items, getTotalPrice());
-
-    // return newReceipt;
-    // }
 
 }
