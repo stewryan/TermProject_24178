@@ -18,7 +18,7 @@ public class MainView {
 
     //Row Search
     private TextField fldSearch = new TextField();
-    private Button btnSearch = new Button("Search");
+    private Button btnSearch = new Button("Search by ID");
 
     /***
      * Left side Starts

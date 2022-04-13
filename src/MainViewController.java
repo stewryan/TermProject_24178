@@ -50,6 +50,7 @@ public class MainViewController {
         currentVariableNumber = list.getOrders().size();
 
         view.getOrderItemsDisplay().prefWidthProperty().bind(view.getOrderItemsDisplay().prefHeightProperty());
+        view.getOrderItemsDisplay().setText(order.toString());
 
         view.getCmbItemType().setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -259,6 +260,8 @@ public class MainViewController {
 
         });
 
+        view.getFldSearch().setPromptText("Enter an order ID");
+
         //TODO Search Function
         //Fired when Enter is in the field
         view.getFldSearch().setOnKeyPressed(e->{
@@ -268,7 +271,16 @@ public class MainViewController {
         });
 
         view.getBtnSearch().setOnAction(e->{
-            //Code here...
+            int searchNumber = Integer.parseInt(view.getFldSearch().getText());
+            order = list.searchByOrderNumber(searchNumber);
+            if (order != null) {
+                view.getOrderItemsDisplay().setText(order.toString());
+                view.getFldSearch().setText("");
+            } else {
+                view.getFldSearch().setText("");
+                view.getAlertInfo().setContentText("Order not found, try searching again!");
+                view.getAlertInfo().showAndWait();
+            }
         });
 
     } // Set view Closes
