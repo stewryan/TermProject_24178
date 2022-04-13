@@ -1,4 +1,5 @@
 import invoice.Order;
+import invoice.OrderList;
 import items.Drink;
 import items.FoodItem;
 // import items.Fries;
@@ -100,7 +101,6 @@ public class MainViewController {
                 //Get ingredients split the hole string by comas and store them
                 String ingredients = view.getFldIngredients().getText();
                 String[] ingredientsArray = ingredients.split(",");
-                
 
                 // Create Food Item
                 //If no description is entered alert info triggered, and nothing is added

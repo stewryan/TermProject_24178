@@ -68,12 +68,13 @@ public abstract class MenuItem implements Serializable {
         return this.maxDiscount;
     }
 
+    public int getCalories() {
+        return ValueCalculator.calculateCalories(this);
+    }
     // public void setCalories(int calories) {
     //     this.calories = calories;
     // }
-    // public int getCalories() {
-    //     return this.calories;
-    // }
+
 
     @Override
     public String toString() {

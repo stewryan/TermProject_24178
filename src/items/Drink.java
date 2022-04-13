@@ -18,7 +18,7 @@ public class Drink extends MenuItem implements MultiSize {
     public Drink(int id, String desc, double discount, Size size) {
         super(id, desc, discount);
         this.drinkSize = size;
-        this.price = PriceCalculator.calculateDrinkprice(this);
+        this.price = ValueCalculator.calculateDrinkprice(this);
     }
 
     public void setSize(Size size) {
@@ -28,14 +28,9 @@ public class Drink extends MenuItem implements MultiSize {
         return this.drinkSize;
     }
 
-    public int getCalories() {
-        return this.calories;
-    }
-    // generate the amount of calories for a drink
-    public void setCalories() {
-        
-    }
-
+    /**
+     * The text that is displayed in the list of items in an order for a Drink
+     */
     @Override
     public String toString() {
         return String.format("%s | Contains %d calories in the %s size.", 

@@ -1,10 +1,12 @@
 package items;
 
 // not sure about this class, just having it here for now to figure out how to calcuate price of an item
-public class PriceCalculator {
+public class ValueCalculator {
     
     private static final double FOOD_PRICE_MULTIPLIER = 1.75;
     private static final double DRINK_PRICE_MULTIPLIER = 0.50;
+
+    private static final double ITEM_CALORIES_MULTIPLIER = 25;
 
     public static double calculateFoodPrice(FoodItem item) {
 
@@ -29,6 +31,30 @@ public class PriceCalculator {
             break;
         }
         return Math.round(price * 100.0) / 100.0; // round to 2 decimals
+
+    }
+
+    public static int calculateCalories(MenuItem item) {
+
+        int calories = 0;
+        
+        if (item instanceof FoodItem) {
+            calories = (int)(((FoodItem)item).getIngredientsArrayList().size() * 2 * ITEM_CALORIES_MULTIPLIER );
+        } else if (item instanceof Drink) {
+            switch (((Drink)item).getSize()) {
+                case SMALL: 
+                    calories = (int)(5 * ITEM_CALORIES_MULTIPLIER);
+                break;
+                case MEDIUM: 
+                    calories = (int)(7.5 * ITEM_CALORIES_MULTIPLIER);
+                break;
+                case LARGE: 
+                    calories = (int)(10 * ITEM_CALORIES_MULTIPLIER);
+                break;
+            }
+        }
+
+        return calories;
 
     }
 
