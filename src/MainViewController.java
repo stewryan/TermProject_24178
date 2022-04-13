@@ -1,4 +1,5 @@
 import invoice.Order;
+import invoice.OrderList;
 import items.Drink;
 import items.FoodItem;
 // import items.Fries;
@@ -170,6 +171,17 @@ public class MainViewController {
         }); // Closes Button Edit
         editView.setHeight(150); // Temporary first height
 
+        //Save and Exit
+        view.getBtnSaveExit().setOnAction(e -> {
+//            orderList.saveToFile();
+            System.exit(0);
+        });
+
+        //New Order
+        view.getBtnNewOrder().setOnAction(e -> {
+            order = new Order();
+            view.getOrderItemsDisplay().setText("");
+        });
 
 
 
