@@ -1,9 +1,6 @@
 package invoice;
 
-import items.Drink;
-import items.FoodItem;
-import items.MenuItem;
-import items.Size;
+import items.*;
 import javafx.scene.control.ComboBox;
 
 import java.io.Serializable;
@@ -24,18 +21,21 @@ public class Order implements Serializable {
 
     // TODO CORRECT
     public void updateOrder(int index, String desc, String ingredients, Size size, ComboBox cmbSelectedType) {
-        // String ingredientsString = vi.getFldIngredients().getText();
+        //Array Creation for Split and Usage
         String[] ingredientsArray = ingredients.split(",");
 
         MenuItem itemToChange = items.get(index);
         itemToChange.setDescription(desc);
+
+        //Setting the specific conditions that updating will follow in case of each item.
         if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 0) {
             ((Drink) itemToChange).setSize(size);
         } else if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 1) {
             ((FoodItem) itemToChange).setIngredients(ingredientsArray);
+        } else if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 2) {
+            ((SideItem) itemToChange).setSize(size);
         }
 
-        // itemToChange.setSize(size);
     }
 
     public void setOrderNumber(int orderNum) {
@@ -82,11 +82,5 @@ public class Order implements Serializable {
 
         return menu;
     }
-
-    // public OrderList completeOrder() {
-    // OrderList newReceipt = new OrderList(items, getTotalPrice());
-
-    // return newReceipt;
-    // }
 
 }

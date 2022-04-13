@@ -29,14 +29,6 @@ public class FoodItem extends MenuItem {
         }
     }
 
-    // // Overloaded methods, can use either string or index of the ingredient
-    // public void removeIngredient(String itemName) {
-    //     ingredients.remove(itemName.toLowerCase());
-    // }
-    // public void removeIngredient(int index) {
-    //     ingredients.remove(index);
-    // }
-
     @Override
     public double getPrice() {
         return ValueCalculator.calculateFoodPrice(this);
@@ -48,8 +40,6 @@ public class FoodItem extends MenuItem {
         }
         return output;
     }
-
-    
 
     public ArrayList<String> getIngredientsArrayList() {
         return this.ingredients;
