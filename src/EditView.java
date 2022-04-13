@@ -1,27 +1,17 @@
-import com.sun.tools.javac.Main;
 import invoice.Order;
-import items.FoodItem;
 import items.Size;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.util.Collection;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EditView extends Stage {
 
@@ -99,7 +89,7 @@ public class EditView extends Stage {
               view.getOrderItemsDisplay().setText(order.toString());
 
            } catch (Exception ex){
-              ex.printStackTrace();
+             view.getAlertInfo().showAndWait();
            }
        });
 
@@ -154,10 +144,18 @@ public class EditView extends Stage {
 
         leftSide.getChildren().addAll(rowItemType, rowItemName, rowIngredients, rowSize, rowConfirmButton);
 
-
+        AtomicBoolean notAdded = new AtomicBoolean(true);
         btnEditProduct.setOnAction(e->{
-            pane.getChildren().add(leftSide);
-            controller.editView.setHeight(280);
+            if (notAdded.get() == true){
+                pane.getChildren().add(leftSide);
+                controller.editView.setHeight(280);
+                notAdded.set(false);
+            } else {
+                pane.getChildren().remove(leftSide);
+                controller.editView.setHeight(160);
+                notAdded.set(true);
+            }
+
         });
 
         btnConfirm.setOnAction(e->{
