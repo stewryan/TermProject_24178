@@ -10,8 +10,8 @@ public class SideItem extends FoodItem implements MultiSize {
     
     private Size size;
 
-    public SideItem(int id, String desc, double discount, Size size) {
-        super(id, desc, 0.02, new String[]{});
+    public SideItem(String desc, Size size) {
+        super(desc, new String[]{});
         this.size = size;
     }
 

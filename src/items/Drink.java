@@ -10,13 +10,11 @@ public class Drink extends MenuItem implements MultiSize {
 
     /**
      * 
-     * @param id
      * @param desc
-     * @param discount
      * @param size
      */
-    public Drink(int id, String desc, double discount, Size size) {
-        super(id, desc, discount);
+    public Drink(String desc, Size size) {
+        super(desc);
         this.drinkSize = size;
         this.price = ValueCalculator.calculateDrinkprice(this);
     }

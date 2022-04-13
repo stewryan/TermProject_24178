@@ -81,9 +81,7 @@ public class MainViewController {
             if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 0){
 
                 //Grabbing variables from mainView
-                int id = 45;
                 String desc = view.getFldItemName().getText();
-                double discount = 0.98;
                 Size size;
                 switch (view.getCmbSize().getSelectionModel().getSelectedIndex()) {
                     case 0:
@@ -104,7 +102,7 @@ public class MainViewController {
                 if (desc.trim() == "" || desc == null){
                     view.getAlertInfo().showAndWait();
                 } else { //If it's not the case it's added
-                    Drink drink = new Drink(id, desc, discount, size);
+                    Drink drink = new Drink(desc, size);
                     order.add(drink);
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
@@ -112,9 +110,7 @@ public class MainViewController {
             } else if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 1){
 
                 //Grabbing variables from mainView
-                int id = 45;
                 String desc = view.getFldItemName().getText();
-                double discount = 0.98;
                 Size size;
                 switch (view.getCmbSize().getSelectionModel().getSelectedIndex()) {
                     case 0:
@@ -141,7 +137,7 @@ public class MainViewController {
                     view.getAlertInfo().showAndWait();
 
                 } else { //If it's not the case it's added
-                    FoodItem food = new FoodItem(id, desc, discount, new String[]{""});
+                    FoodItem food = new FoodItem(desc, new String[]{""});
                     food.setIngredients(ingredientsArray);
                     order.add(food);
                     view.getOrderItemsDisplay().setText(order.toString());
@@ -150,9 +146,7 @@ public class MainViewController {
             } else if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 2){
 
                 //Grabbing variables from mainView
-                int id = 45;
                 String desc = view.getFldItemName().getText();
-                double discount = 0.98;
                 Size size;
                 switch (view.getCmbSize().getSelectionModel().getSelectedIndex()) {
                     case 0:
@@ -176,7 +170,7 @@ public class MainViewController {
                     view.getAlertInfo().showAndWait();
 
                 } else { //If it's not the case it's added
-                    SideItem side = new SideItem(45, desc, discount, size);
+                    SideItem side = new SideItem(desc, size);
                     side.addIngredients(ingredientsArray);
                     order.add(side);
                     view.getOrderItemsDisplay().setText(order.toString());
