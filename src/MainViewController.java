@@ -183,11 +183,11 @@ public class MainViewController {
             list.add(new Order());
             order = list.getOrders().get(list.getOrders().size() - 1);
 
-            int lastItem = list.getOrders().size() - 1;
+            int lastItem = list.getOrders().size() - 2;
             int newOrderNumber = list.getOrders().get(lastItem).getOrderNumber() + 1;
             order.setOrderNumber(newOrderNumber);
 
-            System.out.println();
+            System.out.println(list.getOrders().get(lastItem));
             view.getOrderItemsDisplay().setText(order.toString());
         });
 
