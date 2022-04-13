@@ -10,7 +10,8 @@ import javafx.event.EventHandler;
 
 public class MainViewController {
 
-    private static Order order;
+    private Order order;
+    private OrderList list = new OrderList();
 
     public Order getOrder() {
         return order;
@@ -24,7 +25,8 @@ public class MainViewController {
 
     void setView(MainView view){
 
-        order = new Order();
+        list.add(new Order());
+        order = list.getOrders().get(list.getOrders().size() - 1);
 
         view.getOrderItemsDisplay().prefWidthProperty().bind(view.getOrderItemsDisplay().prefHeightProperty());
 
@@ -178,8 +180,15 @@ public class MainViewController {
 
         //New Order
         view.getBtnNewOrder().setOnAction(e -> {
-            order = new Order();
-            view.getOrderItemsDisplay().setText("");
+            list.add(new Order());
+            order = list.getOrders().get(list.getOrders().size() - 1);
+
+            int lastItem = list.getOrders().size() - 1;
+            int newOrderNumber = list.getOrders().get(lastItem).getOrderNumber() + 1;
+            order.setOrderNumber(newOrderNumber);
+
+            System.out.println();
+            view.getOrderItemsDisplay().setText(order.toString());
         });
 
 
