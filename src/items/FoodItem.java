@@ -37,12 +37,20 @@ public class FoodItem extends MenuItem {
     //     ingredients.remove(index);
     // }
 
+    @Override
+    public double getPrice() {
+        return PriceCalculator.calculateFoodPrice(this);
+    }
     public String getIngredients() {
         String output = "";
         for (String item: this.ingredients) {
             output += item + " ";
         }
         return output;
+    }
+
+    public ArrayList<String> getIngredientsArrayList() {
+        return this.ingredients;
     }
 
     @Override

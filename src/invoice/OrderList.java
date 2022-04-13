@@ -1,20 +1,11 @@
 package invoice;
 
-import items.Drink;
-import items.FoodItem;
-import items.MenuItem;
-import javafx.scene.control.Menu;
-
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.RandomAccessFile;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * invoice.Receipt is created when an invoice.Order.java has finished? Just ideas right now

@@ -1,6 +1,5 @@
 import java.io.IOException;
 
-import com.sun.java.accessibility.util.EventID;
 import invoice.Order;
 import invoice.OrderList;
 import items.Drink;
@@ -28,12 +27,12 @@ public class POS extends Application {
     public static void main(String[] args) {
 
         OrderList list = new OrderList();
-        try {
-            //list.saveToFile();
-            list.loadFromFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // try {
+        //     //list.saveToFile();
+        //     list.loadFromFile();
+        // } catch (IOException e) {
+        //     System.out.println("IOException in POS");
+        // }
 
         Order order = new Order();
         Order order2 = new Order();
@@ -50,10 +49,11 @@ public class POS extends Application {
         order.add(smallPepsi);
         order.add(mediumPepsi);
         order.add(largePepsi);
-        FoodItem burger = new FoodItem(0, "Hamburger", 0.0, new String[] { "Patty, Bun, Tomato, Lettuce" });
+        FoodItem burger = new FoodItem(0, "Hamburger", 0.0, new String[]{ "Patty", "Bun", "Tomato", "Lettuce" });
         order.add(burger);
-        // list.add(order);
+        list.add(order);
 
+        System.out.println(burger.getIngredientsArrayList().get(0));
         System.out.println(list.getOrders());
 
         launch();

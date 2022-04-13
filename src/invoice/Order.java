@@ -63,7 +63,7 @@ public class Order implements Serializable {
         for (int i = 0; i < items.size(); i++) {
             total += items.get(i).getPrice();
         }
-        return total;
+        return Math.round(total * 100.0) / 100.0;
     }
 
     @Override

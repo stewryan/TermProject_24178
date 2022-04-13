@@ -18,6 +18,7 @@ public class Drink extends MenuItem implements MultiSize {
     public Drink(int id, String desc, double discount, Size size) {
         super(id, desc, discount);
         this.drinkSize = size;
+        this.price = PriceCalculator.calculateDrinkprice(this);
     }
 
     public void setSize(Size size) {

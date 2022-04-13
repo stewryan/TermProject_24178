@@ -100,6 +100,7 @@ public class MainViewController {
                 //Get ingredients split the hole string by comas and store them
                 String ingredients = view.getFldIngredients().getText();
                 String[] ingredientsArray = ingredients.split(",");
+                
 
                 // Create Food Item
                 //If no description is entered alert info triggered, and nothing is added
@@ -108,7 +109,7 @@ public class MainViewController {
 
                 } else { //If it's not the case it's added
                     FoodItem food = new FoodItem(id, desc, discount, new String[]{""});
-                    food.addIngredients(ingredientsArray);
+                    food.setIngredients(ingredientsArray);
                     order.add(food);
                     view.getOrderItemsDisplay().setText(order.toString());
                 }

@@ -11,7 +11,7 @@ public abstract class MenuItem implements Serializable {
     
     private int id;
     private String description;
-    private double price;
+    protected double price;
     private double maxDiscount;
     public boolean isInStock;
     protected int calories;
