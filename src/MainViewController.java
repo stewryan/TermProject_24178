@@ -50,7 +50,7 @@ public class MainViewController {
         }
 
         // variable holding the current "page" for viewing records
-        currentVariableNumber = list.getOrders().size();
+        currentVariableNumber = list.getOrders().size() - 1;
 
         view.getOrderItemsDisplay().prefWidthProperty().bind(view.getOrderItemsDisplay().prefHeightProperty());
         view.getOrderItemsDisplay().setText(order.toString());
