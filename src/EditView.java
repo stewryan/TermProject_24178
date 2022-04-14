@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * The edit window that allows a user to edit specific MenuItems in an order.
+ */
 public class EditView extends Stage {
 
     // Items inside
