@@ -11,6 +11,8 @@ import java.util.ArrayList;
  * A class that models a list of records, that saves to a file once the program is done running.
  * When the program starts, it loads all the orders from the file and adds them to the arraylist.
  * 
+ * @author Ryan Stewart Apr 2022 
+ * @author Marcelo Geldres Apr 2022
  */
 public class OrderList {
     

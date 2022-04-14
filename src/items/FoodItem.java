@@ -5,6 +5,9 @@ import java.util.ArrayList;
 /**
  * A class that reprents a general food item on the menu, can be nearly anything (e.g. sandwich, burger, salad, pizza)
  * Does NOT have multiple sizes however.
+ * 
+ * @author Ryan Stewart Apr 2022 
+ * @author Marcelo Geldres Apr 2022
  */
 public class FoodItem extends MenuItem {
 

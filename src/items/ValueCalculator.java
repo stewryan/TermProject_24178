@@ -2,6 +2,9 @@ package items;
 
 /**
  * A class that calculates various values for items on the menu such as PRICE and CALORIES
+ * 
+ * @author Ryan Stewart Apr 2022 
+ * @author Marcelo Geldres Apr 2022
  */
 public class ValueCalculator {
     

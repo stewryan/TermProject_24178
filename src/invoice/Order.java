@@ -7,6 +7,8 @@ import java.util.ArrayList;
 /**
  * A class that resembles an order (Record) in the program
  * 
+ * @author Ryan Stewart Apr 2022 
+ * @author Marcelo Geldres Apr 2022
  */
 public class Order implements Serializable {
 

@@ -4,6 +4,8 @@ package items;
  * A class that repsents an item on the side of a meal/order, such as French Fries
  * Similar to Food Item, however it can be in different SIZES.
  * 
+ * @author Ryan Stewart Apr 2022 
+ * @author Marcelo Geldres Apr 2022
  */
 public class SideItem extends FoodItem implements MultiSize {
     

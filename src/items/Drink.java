@@ -2,7 +2,8 @@ package items;
 /**
  * A class that represnts a drink item on the menu, with its own size
  * 
- * @author Ryan Stewart Apr 2022
+ * @author Ryan Stewart Apr 2022 
+ * @author Marcelo Geldres Apr 2022
  */
 public class Drink extends MenuItem implements MultiSize {
 
