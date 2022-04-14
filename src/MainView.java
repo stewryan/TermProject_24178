@@ -45,6 +45,7 @@ public class MainView {
     private Button btnAdd = new Button("ADD");
     private Button btnSaveExit = new Button("Save & Exit");
     private Button btnNewOrder = new Button("Make a new Order");
+    private Button btnDeleteOrder = new Button("Delete Current Order");
     /***
      * Left side ends
      *
@@ -116,6 +117,9 @@ public class MainView {
     public Button getBtnNewOrder() {
         return btnNewOrder;
     }
+    public Button getBtnDeleteOrder() {
+        return btnDeleteOrder;
+    }
     public TextArea getOrderItemsDisplay() {
         return orderItemsDisplay;
     }
@@ -185,7 +189,8 @@ public class MainView {
         //Add save and newOrder
         HBox rowAddButton = new HBox(btnAdd);
         HBox rowSaveExit = new HBox(btnSaveExit);
-        HBox rowNewOrder = new HBox(btnNewOrder);
+        HBox orderOperations = new HBox();
+        orderOperations.getChildren().addAll(btnNewOrder, btnDeleteOrder);
 
         //Row Search
         HBox rowSearch = new HBox();
@@ -204,7 +209,7 @@ public class MainView {
         rowItemsDisplayOptions.setSpacing(20);
 
         //Setting all the nodes fully
-        leftSide.getChildren().addAll(rowItemType, rowItemName, rowIngredients, rowSize, rowAddButton, rowSaveExit, rowNewOrder);
+        leftSide.getChildren().addAll(rowItemType, rowItemName, rowIngredients, rowSize, rowAddButton, rowSaveExit, orderOperations);
         rightSide.getChildren().addAll(rowItemDisplay, rowItemsDisplayOptions);
 
         //Spacing just in case

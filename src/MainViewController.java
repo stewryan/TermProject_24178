@@ -238,6 +238,18 @@ public class MainViewController {
             }
         }); // Close btnNewOrder
 
+        // Delete Order
+        view.getBtnDeleteOrder().setOnAction(e-> {
+            if (list.getOrders().size() > 1) {
+                list.remove(order);
+                order = list.getOrders().get(--currentVariableNumber);
+                view.getOrderItemsDisplay().setText(order.toString());
+            } else {
+                view.getAlertInfo().setContentText("This is the only order left!");
+                view.getAlertInfo().show();
+            }
+        }); // end of deleteOrder
+
 //     FIRST PREV NEXT LAST Buttons section
         view.getBtnFirst().setOnAction(e->{
             currentVariableNumber = 0;
