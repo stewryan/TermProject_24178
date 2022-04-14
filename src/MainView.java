@@ -42,10 +42,10 @@ public class MainView {
     private ComboBox cmbSize = new ComboBox<>(FXCollections.observableArrayList(size));
 
     //Add Button
-    private Button btnAdd = new Button("ADD");
-    private Button btnSaveExit = new Button("Save & Exit");
-    private Button btnNewOrder = new Button("Make a new Order");
-    private Button btnDeleteOrder = new Button("Delete Current Order");
+    private Button btnAdd = new Button("_ADD");
+    private Button btnSaveExit = new Button("_Save & Exit");
+    private Button btnNewOrder = new Button("_Make a new Order");
+    private Button btnDeleteOrder = new Button("_Delete Current Order");
     /***
      * Left side ends
      *
@@ -55,11 +55,11 @@ public class MainView {
     private TextArea orderItemsDisplay = new TextArea();
 
 //    private Button btnDelete = new Button("DELETE");
-    private Button btnEdit = new Button("EDIT");
-    private Button btnNext = new Button("Next");
-    private Button btnPrev = new Button("Prev");
-    private Button btnFirst = new Button("First");
-    private Button btnLast = new Button("Last");
+    private Button btnEdit = new Button("_EDIT");
+    private Button btnNext = new Button("_Next");
+    private Button btnPrev = new Button("_Prev");
+    private Button btnFirst = new Button("_First");
+    private Button btnLast = new Button("_Last");
 
     /***
      * RIght side ends
