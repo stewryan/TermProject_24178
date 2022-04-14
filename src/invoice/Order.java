@@ -97,13 +97,14 @@ public class Order implements Serializable {
         String menu = "";
 
         menu += "invoice.Receipt for invoice.Order Number " + orderNumber + "\n";
-        menu += "----------------------------------------\n";
+        menu += "────────────────────────────────────────────────\n";
+        
 
         for (int i = 0; i < items.size(); i++) {
             menu += "($" + items.get(i).getPrice() + ") Item [" + i + "]: " + items.get(i) + "\n";
         }
 
-        menu += "----------------------------------------\n";
+        menu += "────────────────────────────────────────────────\n";
         menu += "Total Price: $" + this.getTotalPrice();
 
         return menu;
