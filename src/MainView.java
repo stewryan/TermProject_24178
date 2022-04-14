@@ -66,7 +66,7 @@ public class MainView {
      * Alerts Start
      */
 
-    private Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+    private Alert alertInfo = new Alert(Alert.AlertType.ERROR);
 
     /**
      * Alerts end

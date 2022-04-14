@@ -55,6 +55,11 @@ public class MainViewController {
         view.getOrderItemsDisplay().prefWidthProperty().bind(view.getOrderItemsDisplay().prefHeightProperty());
         view.getOrderItemsDisplay().setText(order.toString());
 
+        /**
+         * Set certain fields to DISABLED if a certain item is selected.
+         * For example, if DRINK is seleceted, Ingredients field will be disabled.
+         * If FOODITEM is selected, the Size field will be disabled.
+         */
         view.getCmbItemType().setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -196,6 +201,7 @@ public class MainViewController {
 
         });//Closes Button Add
 
+        // Open the edit window
         view.getBtnEdit().setOnAction(e->{
             editView.setOrder(order);
             editView.setView(view);
@@ -213,6 +219,7 @@ public class MainViewController {
 
         //New Order
         view.getBtnNewOrder().setOnAction(e -> {
+            // Check if the most recent order created is EMPTY. If it is empty, prompt the user and do not make a new order.
             Order lastOrder = list.getOrders().get(list.getOrders().size() - 1);
             if (lastOrder.getItems().size() < 1){
                 view.getAlertInfo().setContentText("The LAST order is empty. Add to it first!");
@@ -226,6 +233,7 @@ public class MainViewController {
                 order.setOrderNumber(newOrderNumber);
 
 //            System.out.println(list.getOrders().get(lastItem));
+                // Update the box on the right with the new order.
                 view.getOrderItemsDisplay().setText(order.toString());
             }
         }); // Close btnNewOrder
