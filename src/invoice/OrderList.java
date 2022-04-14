@@ -85,7 +85,7 @@ public class OrderList {
 
             // adding orders to the array from the file
             for (Order order: ordersFromFile) {
-                if (!order.getItems().isEmpty()) { // avoid saving completely empty orders
+                if (!(order.getItems().isEmpty())) { // only load non-empty orders
                     orders.add(order);
                 }
             }
