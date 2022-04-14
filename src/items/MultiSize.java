@@ -7,4 +7,6 @@ public interface MultiSize {
     
     Size getSize();
 
+    void setSize(Size size);
+
 }

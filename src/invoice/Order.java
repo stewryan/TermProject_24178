@@ -1,8 +1,6 @@
 package invoice;
 
 import items.*;
-import javafx.scene.control.ComboBox;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -27,44 +25,65 @@ public class Order implements Serializable {
      * @param size
      * @param cmbSelectedType
      */
-    public void updateOrder(int index, String desc, String ingredients, Size size, ComboBox cmbSelectedType) {
-        //Array Creation for Split and Usage
-        String[] ingredientsArray = ingredients.split(",");
+    public void updateOrder(int index, String desc, String ingredients) {
 
         MenuItem itemToChange = items.get(index);
         itemToChange.setDescription(desc);
 
+        //Array Creation for Split and Usage
+        String[] ingredientsArray = ingredients.split(",");
+
         //Setting the specific conditions that updating will follow in case of each item.
-        if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 0) {
-            ((Drink) itemToChange).setSize(size);
-        } else if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 1) {
+        if (itemToChange instanceof FoodItem) {
             ((FoodItem) itemToChange).setIngredients(ingredientsArray);
-        } else if (cmbSelectedType.getSelectionModel().getSelectedIndex() == 2) {
-            ((SideItem) itemToChange).setSize(size);
         }
 
     }
 
+    /**
+     * 
+     * @param orderNum the number to set the order number to
+     */
     public void setOrderNumber(int orderNum) {
         this.orderNumber = orderNum;
     }
 
+    /**
+     * 
+     * @param item to add to the order
+     */
     public void add(MenuItem item) {
         items.add(item);
     }
 
+    /**
+     * 
+     * @param item to remove from the order 
+     */
     public void remove(MenuItem item) {
         items.remove(item);
     }
 
+    /**
+     * 
+     * @param index of the item to remove from the order
+     */
     public void remove(int index) {
         items.remove(index);
     }
 
+    /**
+     * 
+     * @return the items ArrayList of the order
+     */
     public ArrayList<MenuItem> getItems() {
         return this.items;
     }
 
+    /**
+     * 
+     * @return the total price of all the items in the order added together
+     */
     public double getTotalPrice() {
         double total = 0;
         for (int i = 0; i < items.size(); i++) {
@@ -85,7 +104,7 @@ public class Order implements Serializable {
         }
 
         menu += "----------------------------------------\n";
-        menu += "Total Price: " + this.getTotalPrice();
+        menu += "Total Price: $" + this.getTotalPrice();
 
         return menu;
     }

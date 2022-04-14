@@ -97,7 +97,8 @@ public class MainViewController {
         });
 
         view.getBtnAdd().setOnAction(e->{
-            if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 0){
+            int selectedItem = view.getCmbItemType().getSelectionModel().getSelectedIndex();
+            if (selectedItem == 0){
 
                 //Grabbing variables from mainView
                 String desc = view.getFldItemName().getText();
@@ -126,7 +127,7 @@ public class MainViewController {
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
 
-            } else if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 1){
+            } else if (selectedItem == 1){
 
                 //Grabbing variables from mainView
                 String desc = view.getFldItemName().getText();
@@ -162,7 +163,7 @@ public class MainViewController {
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
 
-            } else if (view.getCmbItemType().getSelectionModel().getSelectedIndex() == 2){
+            } else if (selectedItem == 2){
 
                 //Grabbing variables from mainView
                 String desc = view.getFldItemName().getText();
@@ -186,8 +187,8 @@ public class MainViewController {
                 String[] ingredientsArray = ingredients.split(",");
 
                 if (desc.trim() == "" || desc == null){
+                    view.getAlertInfo().setContentText("Description must be entered!");
                     view.getAlertInfo().showAndWait();
-
                 } else { //If it's not the case it's added
                     SideItem side = new SideItem(desc, size);
                     side.addIngredients(ingredientsArray);
@@ -207,10 +208,12 @@ public class MainViewController {
         // Open the edit window
         view.getBtnEdit().setOnAction(e->{
             editView.setOrder(order);
+            editView.setHeight(180);
+            editView.setWidth(250);
             editView.setView(view);
+            editView.setTitle("Edit Order " + order.getOrderNumber());
             editView.setController(this);
             editView.show();
-
         }); // Closes Button Edit
         editView.setHeight(150); // Temporary first height
 
