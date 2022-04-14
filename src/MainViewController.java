@@ -15,9 +15,9 @@ import javafx.scene.input.KeyCode;
 
 public class MainViewController {
 
-    private Order order;
-    private OrderList list = new OrderList();
-    private int currentVariableNumber;
+    private Order order; // the order that is being modified currently
+    private OrderList list = new OrderList(); // instantiate a new OrderList
+    private int currentVariableNumber; // the current "page" (the index of the order that is currently being viewed)
 
     private int lastItem;
     private int newOrderNumber;
@@ -84,7 +84,7 @@ public class MainViewController {
             }
         });
 
-        //This section is triggered by an ENTER key
+        // This section is triggered by an ENTER key
         view.getFldItemName().setOnKeyPressed(e->{
             if( e.getCode() == KeyCode.ENTER ) {
                 view.getBtnAdd().fire();
@@ -94,11 +94,12 @@ public class MainViewController {
             if( e.getCode() == KeyCode.ENTER ) {
                 view.getBtnAdd().fire();
             }
-        });
+        }); // end of section triggered by enter key
 
+        // Add button
         view.getBtnAdd().setOnAction(e->{
-            int selectedItem = view.getCmbItemType().getSelectionModel().getSelectedIndex();
-            if (selectedItem == 0){
+            int selectedItem = view.getCmbItemType().getSelectionModel().getSelectedIndex(); // the item type in the drop down
+            if (selectedItem == 0){ // drink
 
                 //Grabbing variables from mainView
                 String desc = view.getFldItemName().getText();
@@ -127,26 +128,11 @@ public class MainViewController {
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
 
-            } else if (selectedItem == 1){
+            } else if (selectedItem == 1) {
 
                 //Grabbing variables from mainView
                 String desc = view.getFldItemName().getText();
-                Size size;
-                switch (view.getCmbSize().getSelectionModel().getSelectedIndex()) {
-                    case 0:
-                        size = Size.SMALL;
-                        break;
-                    case 1:
-                        size = Size.MEDIUM;
-                        break;
-                    case 2:
-                        size = Size.LARGE;
-                        break;
-                    default:
-                        size = Size.SMALL;
-                        break;
-                }
-
+                
                 //Get ingredients split the hole string by comas and store them
                 String ingredients = view.getFldIngredients().getText();
                 String[] ingredientsArray = ingredients.split(",");
@@ -163,7 +149,7 @@ public class MainViewController {
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
 
-            } else if (selectedItem == 2){
+            } else if (selectedItem == 2){ // side item
 
                 //Grabbing variables from mainView
                 String desc = view.getFldItemName().getText();
@@ -215,7 +201,6 @@ public class MainViewController {
             editView.setController(this);
             editView.show();
         }); // Closes Button Edit
-        editView.setHeight(150); // Temporary first height
 
         //Save and Exit
         view.getBtnSaveExit().setOnAction(e -> {
@@ -256,6 +241,7 @@ public class MainViewController {
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
             } else {
+                view.getAlertInfo().setAlertType(AlertType.ERROR);
                 view.getAlertInfo().setContentText("This is the only order left!");
                 view.getAlertInfo().show();
             }
@@ -269,6 +255,7 @@ public class MainViewController {
             view.getOrderItemsDisplay().setText(order.toString());
         });
 
+        // LAST recrod
         view.getBtnLast().setOnAction(e->{
             currentVariableNumber = list.getOrders().size() - 1;
 
@@ -277,6 +264,7 @@ public class MainViewController {
             view.getOrderItemsDisplay().setText(order.toString());
         });
 
+        // Previous record
         view.getBtnPrev().setOnAction(e->{
             if (currentVariableNumber > 0){
                 --currentVariableNumber;
@@ -289,6 +277,7 @@ public class MainViewController {
             }
         });
 
+        // Next record
         view.getBtnNext().setOnAction(e->{
             if (currentVariableNumber < list.getOrders().size() - 1){
                 ++currentVariableNumber;

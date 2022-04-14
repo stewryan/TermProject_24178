@@ -10,6 +10,11 @@ public class ValueCalculator {
 
     private static final double ITEM_CALORIES_MULTIPLIER = 25;// base multiplier for the calories of any item
 
+    /**
+     * 
+     * @param item to calcualte the price of
+     * @return the calculated price based on how amny ingredients item has
+     */
     public static double calculateFoodPrice(FoodItem item) {
 
         double price = 0.99;
@@ -18,6 +23,11 @@ public class ValueCalculator {
 
     }
 
+    /**
+     * 
+     * @param drink to calculate the price of
+     * @return the calculated price based on the size of drink
+     */
     public static double calculateDrinkprice(Drink drink) { 
 
         double price = 1.99;
@@ -36,11 +46,16 @@ public class ValueCalculator {
 
     }
 
+    /**
+     * 
+     * @param item the item to calcualte the calories of
+     * @return the calculated price based on either SIZE or AMOUNT OF INGREDIENTS (depending if DRINK or FOOD ITEM)
+     */
     public static int calculateCalories(MenuItem item) {
 
         int calories = 0;
         
-        if (item instanceof FoodItem) {
+        if (item instanceof FoodItem || item instanceof SideItem) {
             calories = (int)(((FoodItem)item).getIngredientsArrayList().size() * 2 * ITEM_CALORIES_MULTIPLIER );
         } else if (item instanceof Drink) {
             switch (((Drink)item).getSize()) {

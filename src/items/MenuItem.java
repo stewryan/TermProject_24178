@@ -33,20 +33,22 @@ public abstract class MenuItem implements Serializable {
 
     ///// Getter and setter methods ///////
 
+    /**
+     * 
+     * @param desc The description/name of the item
+     */
     public void setDescription(String desc) {
         this.description = desc;
     }
+    /**
+     * 
+     * @return the items description
+     */
     public String getDescription() {
         return this.description;
     }
     
-
-    // public void setPrice(double price) {
-    //     this.price = price;
-    // }
-    public double getPrice() {
-        return this.price;
-    }
+    public abstract double getPrice(); // must be overridden and calculated using ValueCalculator.java
 
     /**
      * 

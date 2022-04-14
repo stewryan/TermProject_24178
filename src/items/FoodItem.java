@@ -4,13 +4,17 @@ import java.util.ArrayList;
 
 /**
  * A class that reprents a general food item on the menu, can be nearly anything (e.g. sandwich, burger, salad, pizza)
- * 
- * @author Ryan Stewart Apr 2022
+ * Does NOT have multiple sizes however.
  */
 public class FoodItem extends MenuItem {
 
     protected ArrayList<String> ingredients = new ArrayList<>(); // stores all the ingredients, all in lower case
 
+    /**
+     * 
+     * @param desc Description/title of the item
+     * @param ingredients that are used to make the item
+     */
     public FoodItem(String desc, String[] ingredients) {
         super(desc);
         this.addIngredients(ingredients);

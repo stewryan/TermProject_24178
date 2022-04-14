@@ -17,18 +17,35 @@ public class OrderList {
     private ArrayList<Order> orders = new ArrayList<>();
     private String fileName = "data\\orders.dat"; // the name of the file to save to/load from
 
+    /**
+     * 
+     * @param order the order to add to the list
+     */
     public void add(Order order) {
         orders.add(order);
     }
 
+    // overloaded methods
+    /**
+     * 
+     * @param order the order to remove
+     */
     public void remove(Order order) { 
         orders.remove(order);
     }
 
+    /**
+     * 
+     * @param index of the order to remove in the OrderList's orders
+     */
     public void remove(int index) {
         orders.remove(index);
     }
 
+    /**
+     * 
+     * @return the ArrayList of OrderList
+     */
     public ArrayList<Order> getOrders() {
         return orders;
     }
