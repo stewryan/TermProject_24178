@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Optional;
 
 import invoice.Order;
 import invoice.OrderList;
@@ -8,6 +9,8 @@ import items.SideItem;
 import items.Size;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 
 public class MainViewController {
@@ -241,9 +244,14 @@ public class MainViewController {
         // Delete Order
         view.getBtnDeleteOrder().setOnAction(e-> {
             if (list.getOrders().size() > 1) {
-                list.remove(order);
-                order = list.getOrders().get(--currentVariableNumber);
-                view.getOrderItemsDisplay().setText(order.toString());
+                view.getAlertInfo().setAlertType(AlertType.CONFIRMATION);
+                view.getAlertInfo().setContentText("Are you sure you want to delete order " + order.getOrderNumber() + "?");
+                Optional<ButtonType> userRepsonse = view.getAlertInfo().showAndWait();
+                if (userRepsonse.get() == ButtonType.OK) {
+                    list.remove(order);
+                    order = list.getOrders().get(--currentVariableNumber);
+                    view.getOrderItemsDisplay().setText(order.toString());
+                }
             } else {
                 view.getAlertInfo().setContentText("This is the only order left!");
                 view.getAlertInfo().show();
