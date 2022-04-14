@@ -121,7 +121,7 @@ public class MainViewController {
 
                 //If no description is entered alert info triggered, and nothing is added
                 if (desc.trim() == "" || desc == null){
-                    view.getAlertInfo().showAndWait();
+                    view.getAlert().showAndWait();
                 } else { //If it's not the case it's added
                     Drink drink = new Drink(desc, size);
                     order.add(drink);
@@ -140,7 +140,7 @@ public class MainViewController {
                 // Create Food Item
                 //If no description is entered alert info triggered, and nothing is added
                 if (desc.trim() == "" || desc == null){
-                    view.getAlertInfo().showAndWait();
+                    view.getAlert().showAndWait();
 
                 } else { //If it's not the case it's added
                     FoodItem food = new FoodItem(desc, new String[]{""});
@@ -173,8 +173,8 @@ public class MainViewController {
                 String[] ingredientsArray = ingredients.split(",");
 
                 if (desc.trim() == "" || desc == null){
-                    view.getAlertInfo().setContentText("Description must be entered!");
-                    view.getAlertInfo().showAndWait();
+                    view.getAlert().setContentText("Description must be entered!");
+                    view.getAlert().showAndWait();
                 } else { //If it's not the case it's added
                     SideItem side = new SideItem(desc, size);
                     side.addIngredients(ingredientsArray);
@@ -213,8 +213,9 @@ public class MainViewController {
             // Check if the most recent order created is EMPTY. If it is empty, prompt the user and do not make a new order.
             Order lastOrder = list.getOrders().get(list.getOrders().size() - 1);
             if (lastOrder.getItems().size() < 1){
-                view.getAlertInfo().setContentText("The LAST order is empty. Add to it first!");
-                view.getAlertInfo().showAndWait();
+                view.getAlert().setAlertType(AlertType.ERROR);
+                view.getAlert().setContentText("The LAST order is empty. Add to it first!");
+                view.getAlert().showAndWait();
             } else {
                 list.add(new Order());
                 order = list.getOrders().get(list.getOrders().size() - 1);
@@ -232,18 +233,18 @@ public class MainViewController {
         // Delete Order
         view.getBtnDeleteOrder().setOnAction(e-> {
             if (list.getOrders().size() > 1) {
-                view.getAlertInfo().setAlertType(AlertType.CONFIRMATION);
-                view.getAlertInfo().setContentText("Are you sure you want to delete order " + order.getOrderNumber() + "?");
-                Optional<ButtonType> userRepsonse = view.getAlertInfo().showAndWait();
+                view.getAlert().setAlertType(AlertType.CONFIRMATION);
+                view.getAlert().setContentText("Are you sure you want to delete order " + order.getOrderNumber() + "?");
+                Optional<ButtonType> userRepsonse = view.getAlert().showAndWait();
                 if (userRepsonse.get() == ButtonType.OK) {
                     list.remove(order);
                     order = list.getOrders().get(--currentVariableNumber);
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
             } else {
-                view.getAlertInfo().setAlertType(AlertType.ERROR);
-                view.getAlertInfo().setContentText("This is the only order left!");
-                view.getAlertInfo().show();
+                view.getAlert().setAlertType(AlertType.ERROR);
+                view.getAlert().setContentText("This is the only order left!");
+                view.getAlert().show();
             }
         }); // end of deleteOrder
 
@@ -272,8 +273,9 @@ public class MainViewController {
                 //Update Line
                 view.getOrderItemsDisplay().setText(order.toString());
             } else {
-                view.getAlertInfo().setContentText("This is the first record");
-                view.getAlertInfo().showAndWait();
+                view.getAlert().setAlertType(AlertType.ERROR);
+                view.getAlert().setContentText("This is the first record");
+                view.getAlert().showAndWait();
             }
         });
 
@@ -285,8 +287,9 @@ public class MainViewController {
                 //Update Line
                 view.getOrderItemsDisplay().setText(order.toString());
             }  else {
-                view.getAlertInfo().setContentText("This is the last record");
-                view.getAlertInfo().showAndWait();
+                view.getAlert().setAlertType(AlertType.ERROR);
+                view.getAlert().setContentText("This is the last record");
+                view.getAlert().showAndWait();
             }
 
         });
@@ -309,8 +312,8 @@ public class MainViewController {
                 view.getFldSearch().setText("");
             } else {
                 view.getFldSearch().setText("");
-                view.getAlertInfo().setContentText("Order not found, try searching again!");
-                view.getAlertInfo().showAndWait();
+                view.getAlert().setContentText("Order not found, try searching again!");
+                view.getAlert().showAndWait();
             }
         });
 

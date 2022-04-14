@@ -67,7 +67,7 @@ public class MainView {
      * Alerts Start
      */
 
-    private Alert alertInfo = new Alert(Alert.AlertType.ERROR);
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
 
     /**
      * Alerts end
@@ -144,8 +144,8 @@ public class MainView {
     public TextField getFldSearch() {
         return fldSearch;
     }
-    public Alert getAlertInfo() {
-        return alertInfo;
+    public Alert getAlert() {
+        return alert;
     }
 
     public MainView(){
@@ -225,7 +225,7 @@ public class MainView {
         paneFull.getChildren().addAll(topPane,rowSearch, bottomPane);
 
         //Alert box for empty fields
-        alertInfo.setContentText("None of the fields can be empty");
+        alert.setContentText("None of the fields can be empty");
 
         return paneFull;
 

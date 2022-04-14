@@ -86,8 +86,8 @@ public class EditView extends Stage {
                 view.getOrderItemsDisplay().setText(order.toString());
 
             } catch (Exception ex) {
-                view.getAlertInfo().setContentText("Item not found. Use the number in Item [#] in the order list.");
-                view.getAlertInfo().showAndWait();
+                view.getAlert().setContentText("Item not found. Use the number in Item [#] in the order list.");
+                view.getAlert().showAndWait();
             }
         });
 
@@ -158,14 +158,14 @@ public class EditView extends Stage {
 
                 
                 if (newDesc.trim() == "" || newDesc == null) {
-                    view.getAlertInfo().showAndWait();
+                    view.getAlert().showAndWait();
                 } else { // If it's not the case it's updated
                     order.updateOrder(idToModify, newDesc, ingredients);
                     view.getOrderItemsDisplay().setText(order.toString());
                 }
             } catch (Exception ex) {
-                view.getAlertInfo().setContentText("Fields Can't be Empty");
-                view.getAlertInfo().showAndWait();
+                view.getAlert().setContentText("Fields Can't be Empty");
+                view.getAlert().showAndWait();
             }
 
         });
